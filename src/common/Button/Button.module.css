@@ -1,0 +1,129 @@
+.button {
+    min-width: 41px;
+    height: 35px;
+
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 13px;
+
+    color: #f5f5f5;
+
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 5px;
+    background: center no-repeat none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 10px 10px;
+}
+
+.button_outline:hover,
+.button_default:hover {
+    cursor: pointer;
+    color: #ff9100;
+}
+
+.button_default:hover {
+    background-color: #181818;
+}
+
+.button_outline:hover {
+    background-color: #181818;
+}
+
+.button_delete {
+    background: center no-repeat url('./icons/delete-default.svg');
+}
+
+.button_delete:hover {
+    background: center no-repeat url('./icons/delete-focused.svg');
+}
+
+.button_redo {
+    background: center no-repeat url('./icons/redo-default.svg');
+}
+
+.button_redo:hover {
+    background: center no-repeat url('./icons/redo-focused.svg');
+}
+
+.button_undo {
+    background: center no-repeat url('./icons/undo-default.svg');
+}
+
+.button_undo:hover {
+    background: center no-repeat url('./icons/undo-focused.svg');
+}
+
+.button_arrow_down {
+    background: center no-repeat url('./icons/arrow_down-default.svg');
+}
+
+.button_arrow_down:hover {
+    background: center no-repeat url('./icons/arrow_down-focused.svg');
+}
+
+.button_arrow_up {
+    background: center no-repeat url('./icons/arrow_up-default.svg');
+}
+
+.button_arrow_up:hover {
+    background: center no-repeat url('./icons/arrow_up-focused.svg');
+}
+
+.button_align_left {
+    background: center no-repeat url('./icons/align_left.svg');
+}
+
+.button_align_left:hover {
+    background: center no-repeat url('./icons/align_left_active.svg');
+}
+
+.button_align_right {
+    background: center no-repeat url('./icons/align_right.svg');
+}
+
+.button_align_right:hover {
+    background: center no-repeat url('./icons/align_right_active.svg');
+}
+
+.button_align_center {
+    background: center no-repeat url('./icons/align_center.svg');
+}
+
+.button_align_center:hover {
+    background: center no-repeat url('./icons/align_center_active.svg');
+}
+
+.button_text_color {
+    background: center no-repeat url('./icons/text_color.svg');
+}
+
+
+.button_undo:hover,
+.button_redo:hover,
+.button_delete:hover,
+.button_sign:hover,
+.button_arrow_down:hover,
+.button_arrow_up:hover,
+.button_align_left:hover,
+.button_align_right:hover,
+.button_align_center:hover,
+.button_text_color:hover {
+    background-color: #181818;
+    cursor: pointer;
+    color: #ff9100;
+}
+
+.text {
+    white-space: nowrap;
+}
+
+.text_sign {
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 36px;
+}

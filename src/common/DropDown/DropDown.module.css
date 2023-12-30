@@ -1,0 +1,175 @@
+.container {
+    width: 135px;
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 13px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    z-index: 1;
+}
+
+.drop_down {
+    width: auto;
+    height: 35px;
+
+    color: #f5f5f5;
+
+    box-sizing: border-box;
+    /* border: 1px solid #f5f5f5; */
+    border-radius: 5px;
+    background: center no-repeat none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 10px 10px;
+}
+
+.drop_down:hover {
+    cursor: pointer;
+}
+
+.drop_down_active {
+    /* border-color: #ff9100; */
+    color: #ff9100;
+    background-color: #181818;
+}
+
+.text_container::after {
+    content: url('./icons/arrow.svg');
+    width: 11px;
+    height: 6px;
+    margin-left: 7px;
+}
+
+.text_container_active::after {
+    content: url('./icons/arrow-active.svg');
+}
+
+.options_container {
+    width: auto;
+    height: auto;
+    padding: 7px 0;
+
+    background: #585858;
+    color: #f5f5f5;
+    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    top: 35px;
+}
+
+.figure, .image, .text {
+    width: 135px;
+    height: 35px;
+    background: none;
+    border-radius: 5px;
+    padding-left: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.figure:hover, .image:hover, .text:hover {
+    cursor: pointer;
+}
+
+.figure::after {
+    content: url('./icons/arrow--left.svg');
+    width: 6px;
+    height: 11px;
+    margin-right: 10px;
+}
+
+.figure_active, .image:hover, .text:hover {
+    background: #505050;
+    color: #ff9100;
+}
+
+.figure_active::after {
+    content: url('./icons/arrow--left-active.svg');
+}
+
+.figure_types {
+    width: auto;
+    height: auto;
+    background: #585858;
+    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    position: absolute;
+    top: 7px;
+    left: 136px;
+    display: flex;
+}
+
+.rectangle, .triangle, .circle {
+    width: 35px;
+    height: 35px;
+    background-color: #585858;
+    border-radius: 5px;
+}
+
+.rectangle {
+    background-image: url('./icons/rectangle.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.triangle {
+    background-image: url('./icons/triangle.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.circle {
+    background-image: url('./icons/circle.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.rectangle:hover, .triangle:hover, .circle:hover {
+    cursor: pointer;
+    background-color: #505050;
+}
+
+.rectangle:hover {
+    background-image: url('./icons/rectangle-hover.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.triangle:hover {
+    background-image: url('./icons/triangle-hover.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.circle:hover {
+    background-image: url('./icons/circle-hover.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.image_types {
+    width: auto;
+    height: auto;
+
+    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    background-color: #585858;
+
+    position: absolute;
+    top: 42px;
+    left: 136px;
+    display: flex;
+    flex-direction: column;
+}
