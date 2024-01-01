@@ -6,11 +6,13 @@ import { connect } from 'react-redux';
 import { useRef } from 'react';
 
 type SlideBarProps = {
-    slide: Slide
+    slide: Slide,
+    isDarkTheme: boolean
 }
 
 function SlideEditor({
-        slide 
+        slide,
+        isDarkTheme
     }: SlideBarProps) {  
     const slideRef = useRef(null);     
     
@@ -30,7 +32,7 @@ function SlideEditor({
     )
     return (
         <div 
-            className = {styles.slide_container}
+            className={[styles.slide_container, isDarkTheme ? styles.slide_container_light_theme : styles.slide_container_dark_theme].join(' ')}
             ref = {slideRef}
         >
             <SlideView
@@ -44,7 +46,8 @@ function SlideEditor({
 function mapStateToProps(state: Editor) {
     const indexSlide: number = state.presentation.slides.findIndex(slide => slide.slideId === state.presentation.currentSlideIds[0]);
     return {
-        slide: state.presentation.slides[indexSlide]
+        slide: state.presentation.slides[indexSlide],
+        isDarkTheme: state.isDarkTheme
     }
 }
 

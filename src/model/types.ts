@@ -3,8 +3,9 @@ import { Size, Position } from '../core/types/types'
 type Editor = {
     presentation: Presentation;
     history: History;
-    statePreview: boolean;
     buffers: Buffers;
+    statePreview: boolean;
+    isDarkTheme: boolean;
 }
 
 type Buffers = {

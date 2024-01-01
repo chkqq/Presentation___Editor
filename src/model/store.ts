@@ -27,7 +27,8 @@ let initialState: Editor = {
         slideBuffer: [],
         elementBuffer: []
     },
-    statePreview: false
+    statePreview: false,
+    isDarkTheme: false
 };
 
 export type ActionType = {
@@ -125,6 +126,7 @@ function mainReducer(state: Editor = initialState, action: ActionType): Editor {
     const addInHistory: boolean = (action.type !== 'SAVE_DOCUMENT')
                                 && (action.type !== 'EXPORT_DOCUMENT')
                                 && (action.type !== 'SWITCH_PREVIEW')
+                                && (action.type !== 'TOGGLE_THEME')
                                 && (action.type !== 'UPLOAD_DOCUMENT')
                                 && (action.type !== 'SWITCH_PREVIEW')
                                 && (action.type !== 'UNDO')

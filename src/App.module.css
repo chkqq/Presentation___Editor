@@ -1,7 +1,14 @@
-.app {
+.app_container {
     width: 100vw;
     height: 100vh;
     user-select: none;
+}
+
+.app_light_theme {
+    background-color: #ffffff;
+}
+
+.app_dark_theme {
     background-color: #212121;
 }
 

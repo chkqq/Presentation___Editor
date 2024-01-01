@@ -9,6 +9,7 @@ import { useRef } from 'react'
 
 
 interface SideBarProps {
+    isDarkTheme: boolean,
     slides: Array<Slide>,
     currentSlideIds: Array<string>,
     switchSlide: (slideId: string) => void,
@@ -17,6 +18,7 @@ interface SideBarProps {
 }
 
 const SideBar = ({
+    isDarkTheme,
     slides,
     currentSlideIds,
     switchSlide,
@@ -68,7 +70,7 @@ const SideBar = ({
         </div>
     ))
     return (
-        <div className = {styles.sidebar_container} >
+        <div className={[styles.sidebar_container, isDarkTheme ? styles.sidebar_container_light_theme : styles.sidebar_container_dark_theme].join(' ')}>
             <ol className = {styles.slide_list}>{slidesList}</ol>
         </div>
     )
@@ -77,7 +79,8 @@ const SideBar = ({
 function mapStateToProps(state: Editor) {
     return {
         slides: state.presentation.slides,
-        currentSlideIds: state.presentation.currentSlideIds
+        currentSlideIds: state.presentation.currentSlideIds,
+        isDarkTheme: state.isDarkTheme,
     }
 }
 

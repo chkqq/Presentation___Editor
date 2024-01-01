@@ -12,13 +12,15 @@ import { useEffect, useRef, useState } from 'react';
 
 interface AppProps {
     statePreview: Boolean,
+    isDarkTheme: Boolean,
     slides: Array<Slide>,
-    slideId: String
-    switchPreview: () => void
+    slideId: String,
+    switchPreview: () => void,
 }
 
 function App({
     statePreview,
+    isDarkTheme,
     slides,
     slideId,
     switchPreview
@@ -75,7 +77,7 @@ function App({
         </div>      
     ))
     return (
-        <div className={styles.app}>
+        <div className={[styles.app_container, isDarkTheme ? styles.app_light_theme : styles.app_dark_theme].join(' ')}>
             {
                 statePreview ?
                 <div  className={styles.preview_container}> 
@@ -99,6 +101,7 @@ function App({
 function mapStateToProps(state: Editor) {
     return {
         statePreview: state.statePreview,
+        isDarkTheme: state.isDarkTheme,
         slides: state.presentation.slides,
         slideId: state.presentation.currentSlideIds[0]
     }

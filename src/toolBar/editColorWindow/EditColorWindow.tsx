@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-
+import { Editor } from "../../model/types";
 import { SlideElement } from "../../model/types"
 import Button from "../../common/Button/Button";
 import Knob from "../../common/Knob/Knob";
@@ -12,6 +12,7 @@ import { useClickOutside } from '../../core/hooks/useClickOutside'
 import { getBase64FromPicture } from "../../model/export";
 
 interface EditColorWindowProps {
+    isDarkTheme: boolean,
     firstSelectedElement: SlideElement | null
     drawMode: string,
     onClick: () => void,
@@ -23,6 +24,7 @@ interface EditColorWindowProps {
 }
 
 function EditColorWindow({ 
+    isDarkTheme,
     drawMode,
     firstSelectedElement,
     onClick,
@@ -51,7 +53,7 @@ function EditColorWindow({
     return (
         <div className={styles.edit_color_window}>
             <div
-                className={styles.frame}
+                className={[styles.frame, isDarkTheme ? styles.frame_light_theme : styles.frame_dark_theme].join(' ')}
                 ref = {frameRef}
             >
                 {
@@ -179,6 +181,12 @@ function EditColorWindow({
     )
 }
 
+function mapStateToProps(state: Editor) {
+    return {
+        isDarkTheme: state.isDarkTheme,
+    }
+}
+
 const mapDispatchToProps = (dispatch: AppDispatch) => {
     return {
         changeStrokeColor: (newColor: string) => dispatch(changeStrokeColor(newColor)),
@@ -189,4 +197,4 @@ const mapDispatchToProps = (dispatch: AppDispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(EditColorWindow)
+export default connect(mapStateToProps, mapDispatchToProps)(EditColorWindow)

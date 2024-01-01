@@ -1,8 +1,8 @@
 .edit_color_window {
     width: 100vw;
     height: 100vh;
+    color: #c6c6c6;
     background: rgba(0, 0, 0, 0.27);
-    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,6 +21,15 @@
     flex-direction: column;
 }
 
+.frame_light_theme {
+    background-color: #f5f5f5;
+}
+
+.frame_dark_theme {
+    background: #585858;
+}
+
+
 .head_text {
     margin-top: 26px;
     margin-left: 29px;
@@ -30,7 +39,7 @@
 }
 
 .hr {
-    color: #f5f5f5;
+    color: #c6c6c6;
     width: 300px;
     align-self: center;
     height: 2px;

@@ -11,11 +11,12 @@ import { Editor, Slide, SlideElement } from "../model/types"
 
 import styles from "./ToolBar.module.css"
 import EditColorWindow from "./editColorWindow/EditColorWindow";
-import { exportDoc, addSlide, changeTextProps, changeTitle, redo, removeSlides, saveDoc, switchPreview, switchSlidePositions, undo } from "../model/actionCreators";
+import { exportDoc, addSlide, changeTextProps, changeTitle, redo, removeSlides, saveDoc, switchPreview, toggleTheme, switchSlidePositions, undo } from "../model/actionCreators";
 
 type ToolBarProps = {
     slide: Slide,
     title: string,
+    isDarkTheme: boolean,
     saveDoc: () => void,
     uploadDoc: () => void,
     addSlide: () => void,
@@ -24,6 +25,7 @@ type ToolBarProps = {
     undo: () => void,
     redo: () => void,
     switchPreview: () => void,
+    toggleTheme: () => void,
     exportDoc: () => void,
     changeTextFont: (font: string) => void,
     changeTextSize: (fontSize: number) => void,
@@ -35,6 +37,7 @@ type ToolBarProps = {
 const ToolBar = ({
     slide,
     title,
+    isDarkTheme,
     saveDoc,
     uploadDoc,
     addSlide,
@@ -43,6 +46,7 @@ const ToolBar = ({
     undo,
     redo,
     switchPreview,
+    toggleTheme,
     exportDoc,
     changeTextFont,
     changeTextSize,
@@ -71,7 +75,7 @@ const ToolBar = ({
     
 
     return (
-        <div className={styles.toolbar}>
+        <div className={styles.toolBar}>
             <div className={styles.top_block}>
                 <div className={styles.rename_container}>
                 {
@@ -110,6 +114,17 @@ const ToolBar = ({
                             text='Загрузить'
                             onClick={() => uploadDoc()}
                         />
+                    </div>
+                    <div className={styles.outline_button}>
+                        <Button
+                            viewStyle='outline'
+                            text='сменить тему'
+                            onClick={() => 
+                                {toggleTheme()
+                                 console.log('abvgd', isDarkTheme)
+                                }}
+                        />
+                        
                     </div>
                 </div>
             </div>
@@ -301,7 +316,8 @@ function mapStateToProps(state: Editor) {
     const indexSlide: number = state.presentation.slides.findIndex(slide => slide.slideId === state.presentation.currentSlideIds[0]);
     return { 
         slide: state.presentation.slides[indexSlide],
-        title: state.presentation.title
+        title: state.presentation.title,
+        isDarkTheme: state.isDarkTheme
     }
 }
 
@@ -315,6 +331,7 @@ const mapDispatchToProps = (dispatch: AppDispatch) => {
         undo: () => dispatch(undo()),
         redo: () => dispatch(redo()),
         switchPreview: () => dispatch(switchPreview()),
+        toggleTheme: () => dispatch(toggleTheme()),
         exportDoc: () => dispatch(exportDoc()),
         changeTextFont: (font: string) => dispatch(changeTextProps(font)),
         changeTextSize: (fontSize: number) => dispatch(changeTextProps(undefined, undefined, undefined, fontSize)),

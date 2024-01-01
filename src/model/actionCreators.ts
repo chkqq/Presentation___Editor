@@ -26,6 +26,12 @@ function switchPreview() {
     }
 }
 
+function toggleTheme() {
+    return {
+        type: 'TOGGLE_THEME'
+    }
+}
+
 function undo() {
     return {
         type: 'UNDO'
@@ -231,7 +237,7 @@ function removeSelection(elementId: string) {
     }
 }
 
-export { uploadDoc, redo, undo, switchPreview, exportDoc, saveDoc, changeTitle, addSlide, removeSlides,
+export { uploadDoc, redo, undo, switchPreview, toggleTheme, exportDoc, saveDoc, changeTitle, addSlide, removeSlides,
          switchSlide, selectOneSlide, selectManySlides, switchSlidePositions, setBackground,
          addObject, addImage, selectElement, selectManyElements, changePosition, changeAngle, changeSize, switchLayer,
          changeTextProps, changeStrokeWidth, changeStrokeColor, changeFillColor, deleteSelected, removeSelection,

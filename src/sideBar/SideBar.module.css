@@ -1,6 +1,13 @@
 .sidebar_container {
     max-height: 88.5vh;
     width: 350px;
+}
+
+.sidebar_container_light_theme {
+    background-color: #f1f1f1;
+}
+
+.sidebar_container_dark_theme {
     background-color: #757575;
 }
 
@@ -14,7 +21,6 @@
 .sidebar_element {
     width: 270px;
     height: 184px;
-    background-color: #757575;
     user-select: none;
 }
 

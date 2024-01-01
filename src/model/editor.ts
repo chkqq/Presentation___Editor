@@ -117,6 +117,15 @@ function switchPreviewReducer(editor: Editor): Editor {
     }
 }
 
+function toggleThemeReducer(editor: Editor): Editor {
+    const newEditor = deepClone(editor) as Editor;
+    console.log('1212');
+    return {
+      ...newEditor,
+      isDarkTheme: !editor.isDarkTheme,
+    };
+}
+
 function undoReducer(editor: Editor): Editor {
     const newEditor = deepClone(editor) as Editor;
     if (newEditor.history.undoStack.length !== 0) {
@@ -158,6 +167,8 @@ function editorReducer(state: Editor, action: ActionType): Editor {
             }
         case 'SWITCH_PREVIEW':
             return switchPreviewReducer(state)
+        case 'TOGGLE_THEME':
+            return toggleThemeReducer(state)
         case 'UNDO': 
             return undoReducer(state)
         case 'REDO':

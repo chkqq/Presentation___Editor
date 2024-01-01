@@ -3,7 +3,7 @@
     font-weight: 500;
     font-size: 13px;
 
-    color: #f5f5f5;
+    color: #c6c6c6;
     border: 1px solid;
     border-color: #585858;
     background-color: #585858;
@@ -25,7 +25,7 @@
 
 .input:hover {
     cursor: pointer;
-    background-color: #181818;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .input:focus {
