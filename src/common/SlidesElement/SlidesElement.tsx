@@ -10,7 +10,7 @@ import { changePosition, changeSize, changeTextProps, selectElement, selectManyE
 import { connect } from 'react-redux';
 import { useResize } from '../../core/hooks/useResize';
 import { useClickOutside } from '../../core/hooks/useClickOutside';
-import { useRotate } from '../../core/hooks/useRotate';
+
 
 type SlidesElementProps = {
     slideElement: SlideElement | undefined,
@@ -37,8 +37,7 @@ const SlidesElement = ({
     changeSize,
     removeSelection
 }: SlidesElementProps) => {
-    const slideElementRef = useRef<HTMLDivElement>(null);  
-    const rotateButtonRef = useRef<HTMLDivElement>(null);
+    const slideElementRef = useRef<HTMLDivElement>(null);
 
 
     const clickOutsideFunction = () => { 
@@ -54,13 +53,6 @@ const SlidesElement = ({
         elementRef: slideElementRef, 
         onMouseUpFunction: (coordinates: Position) => changePosition(coordinates.x, coordinates.y),
         active
-    })
-
-    useRotate({
-        elementRef: slideElementRef,
-        onMouseUpFunction: (angleShift: number) => changeAngle(angleShift), 
-        rotateButtonRef,
-        startAngle: slideElement?.angle? slideElement?.angle: 0 //
     })
 
     type CornersType = {
@@ -117,8 +109,7 @@ const SlidesElement = ({
                             'top': slideElement.position.y,
                             'left': slideElement.position.x,
                             'width': slideElement.size.width,
-                            'height': slideElement.size.height,
-                            'transform': `rotate(${angle}deg)`
+                            'height': slideElement.size.height
                         }}
                         onClick = {(e) => {
                             if (!active) {
@@ -137,8 +128,7 @@ const SlidesElement = ({
                                 <div className={`${styles.point} ${styles.point_top_left}`} ref = {topLeftRef} id = 'top-left'></div>
                                 <div className={`${styles.point} ${styles.point_top_right}`} ref = {topRightRef} id = 'top-right'></div>
                                 <div className={`${styles.point} ${styles.point_bottom_left}`} ref = {bottomLeftRef} id = 'bottom-left'></div>
-                                <div className={`${styles.point} ${styles.point_bottom_right}`} ref = {bottomRightRef} id = 'bottom-right'></div> 
-                                <div className={`${styles.point} ${styles.rotate_point}`} ref = {rotateButtonRef}></div>
+                                <div className={`${styles.point} ${styles.point_bottom_right}`} ref = {bottomRightRef} id = 'bottom-right'></div>
                             </div>
                         }
                         <Text
@@ -169,8 +159,7 @@ const SlidesElement = ({
                             'left': slideElement.position.x,
                             'width': slideElement.size.width,
                             'height': slideElement.size.height,
-                            'strokeWidth': slideElement.figure?.strokeWidth,
-                            'transform': `rotate(${angle}deg)`
+                            'strokeWidth': slideElement.figure?.strokeWidth
                         }}
                         onClick = {(e) => {
                             if (!active) {
@@ -190,7 +179,6 @@ const SlidesElement = ({
                                 <div className={`${styles.point} ${styles.point_top_right}`} ref = {topRightRef} id = 'top-right'></div>
                                 <div className={`${styles.point} ${styles.point_bottom_left}`} ref = {bottomLeftRef} id = 'bottom-left'></div>
                                 <div className={`${styles.point} ${styles.point_bottom_right}`} ref = {bottomRightRef} id = 'bottom-right'></div>
-                                <div className={`${styles.point} ${styles.rotate_point}`} ref = {rotateButtonRef}></div>
                             </div>
                         }
                         <Figure
@@ -215,8 +203,7 @@ const SlidesElement = ({
                         'top': slideElement.position.y,
                         'left': slideElement.position.x,
                         'width': slideElement.size.width,
-                        'height': slideElement.size.height,
-                        'transform': `rotate(${angle}deg)`
+                        'height': slideElement.size.height
                     }}
                     onClick = {(e) => {
                         if (!active) {
@@ -236,7 +223,6 @@ const SlidesElement = ({
                             <div className={`${styles.point} ${styles.point_top_right}`} ref = {topRightRef} id = 'top-right'></div>
                             <div className={`${styles.point} ${styles.point_bottom_left}`} ref = {bottomLeftRef} id = 'bottom-left'></div>
                             <div className={`${styles.point} ${styles.point_bottom_right}`} ref = {bottomRightRef} id = 'bottom-right'></div>
-                            <div className={`${styles.point} ${styles.rotate_point}`} ref = {rotateButtonRef}></div>
                         </div>
                     }
                     <img

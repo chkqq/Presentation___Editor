@@ -8,7 +8,7 @@ import { uploadDoc, redo, undo, deleteSelected, switchLayer, copy, paste } from 
 
 let initialState: Editor = {
     presentation: {
-        title: "Braviypresentation",
+        title: "Ваша презентация",
         slides: [
             {
                 slideId: "0",
