@@ -95,11 +95,39 @@
     font-size: 13px;
 }
 
-.optional_tools_container > input {
-    margin-right: 30px;
-}
-
 .optional_tools_text {
     margin: auto;
-    margin-right: 10px;
+    margin-right: 5px;
+}
+
+.optional_tools_select {
+    font-size: 16px;
+    margin-right: 15px;
+}
+
+.select-wrapper {
+  position: relative;
+  width: 100px; 
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  appearance: none;
+  cursor: pointer;
+}
+
+.select-arrow {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+select:hover {
+  border-color: #555;
 }

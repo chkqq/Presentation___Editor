@@ -263,19 +263,27 @@ function OptionalTools({
     else if (textSelected && !figureSelected && firstSelectedElement.textProps) {
         return (
             <div className={styles.optional_tools_container}>
-                <p className={styles.optional_tools_text}>Шрифт</p>
-                <TextField
-                    size="small"
-                    placeholder={firstSelectedElement.textProps.font}
-                    onKeyUp={(value) => changeTextFont(value)}
-                /> 
+                {/* <p className={styles.optional_tools_text}>Шрифт</p> */}
+                <select
+                  className={styles.optional_tools_select}
+                  onChange={(e) => changeTextFont(e.target.value)}
+                  value={firstSelectedElement.textProps.font}
+                >
+                  <option value="Arial">Arial</option>
+                  <option value="Calibri">Calibri</option>
+                  <option value="Roboto">Roboto</option>
+                  <option value="Jost">Jost</option>
+                  <option value="Arsenal">Arsenal</option>
+                  <option value="Ledger">Ledger</option>
+                  <option value="Martel">Martel</option>
+                </select>
                 <p className={styles.optional_tools_text}>Размер шрифта</p>
                 <Knob 
                     value={firstSelectedElement.textProps.fontSize} 
                     step = {1}   
                     onClick={(value) => changeTextSize(value)}
                 />
-                <p className={styles.optional_tools_text}>Начертание</p>
+                <p className={styles.optional_tools_text}>Жирность</p>
                 <Knob 
                     value={firstSelectedElement.textProps.fontWeight} 
                     step = {100}   
