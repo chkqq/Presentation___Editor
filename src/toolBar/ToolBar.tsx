@@ -6,12 +6,14 @@ import Button from "../common/Button/Button"
 import DropDown from "../common/DropDown/DropDown"
 import Knob from "../common/Knob/Knob"
 import TextField from "../common/TextField/textField" 
+import themeButton from "../common/ThemeButton/themeButton";
 
 import { Editor, Slide, SlideElement } from "../model/types"
 
 import styles from "./ToolBar.module.css"
 import EditColorWindow from "./editColorWindow/EditColorWindow";
 import { exportDoc, addSlide, changeTextProps, changeTitle, redo, removeSlides, saveDoc, switchPreview, toggleTheme, switchSlidePositions, undo } from "../model/actionCreators";
+import ThemeButton from "../common/ThemeButton/themeButton";
 
 type ToolBarProps = {
     slide: Slide,
@@ -116,15 +118,9 @@ const ToolBar = ({
                         />
                     </div>
                     <div className={styles.outline_button}>
-                        <Button
-                            viewStyle='outline'
-                            text='сменить тему'
-                            onClick={() => 
-                                {toggleTheme()
-                                 console.log('abvgd', isDarkTheme)
-                                }}
-                        />
-                        
+                        <ThemeButton 
+                        onClick={toggleTheme}
+                        />     
                     </div>
                 </div>
             </div>

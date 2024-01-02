@@ -6,7 +6,7 @@
     font-weight: 500;
     font-size: 13px;
 
-    color: #f5f5f5;
+    color: #c6c6c6;
 
     box-sizing: border-box;
     border: 1px solid rgba(0, 0, 0, 0);
@@ -20,6 +20,14 @@
     padding: 10px 10px;
 }
 
+.button_light_theme {
+    color: #505050;
+}
+
+.button_dark_theme {
+    color: #e9e7e7;
+}
+
 .button_outline:hover,
 .button_default:hover {
     cursor: pointer;
@@ -27,93 +35,133 @@
 }
 
 .button_default:hover {
-    background-color: #181818;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .button_outline:hover {
-    background-color: #181818;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
-.button_delete {
-    background: center no-repeat url('./icons/delete-default.svg');
+.button_delete_light_theme {
+    background: center no-repeat url('./icons/delete_light_theme.svg');
 }
 
-.button_delete:hover {
+.button_delete_dark_theme {
+    background: center no-repeat url('./icons/delete_dark_theme.svg');
+}
+
+.button_delete_light_theme:hover, .button_delete_dark_theme:hover {
     background: center no-repeat url('./icons/delete-focused.svg');
 }
 
-.button_redo {
-    background: center no-repeat url('./icons/redo-default.svg');
+.button_redo_light_theme {
+    background: center no-repeat url('./icons/redo_light_theme.svg');
 }
 
-.button_redo:hover {
+.button_redo_dark_theme {
+    background: center no-repeat url('./icons/redo_dark_theme.svg');
+}
+
+.button_redo_light_theme:hover, .button_redo_dark_theme:hover {
     background: center no-repeat url('./icons/redo-focused.svg');
 }
 
-.button_undo {
-    background: center no-repeat url('./icons/undo-default.svg');
+.button_undo_light_theme {
+    background: center no-repeat url('./icons/undo_light_theme.svg');
 }
 
-.button_undo:hover {
+.button_undo_dark_theme {
+    background: center no-repeat url('./icons/undo_dark_theme.svg');
+}
+
+.button_undo_light_theme:hover, .button_undo_dark_theme:hover {
     background: center no-repeat url('./icons/undo-focused.svg');
 }
 
-.button_arrow_down {
-    background: center no-repeat url('./icons/arrow_down-default.svg');
+.button_arrow_down_light_theme {
+    background: center no-repeat url('./icons/arrow_down_light_theme.svg');
 }
 
-.button_arrow_down:hover {
+.button_arrow_down_dark_theme {
+    background: center no-repeat url('./icons/arrow_down_dark_theme.svg');
+}
+
+.button_arrow_down_light_theme:hover, .button_arrow_down_dark_theme:hover {
     background: center no-repeat url('./icons/arrow_down-focused.svg');
 }
 
-.button_arrow_up {
-    background: center no-repeat url('./icons/arrow_up-default.svg');
+.button_arrow_up_light_theme {
+    background: center no-repeat url('./icons/arrow_up_light_theme.svg');
 }
 
-.button_arrow_up:hover {
+.button_arrow_up_dark_theme {
+    background: center no-repeat url('./icons/arrow_up_dark_theme.svg');
+}
+
+.button_arrow_up_light_theme:hover, .button_arrow_up_dark_theme:hover {
     background: center no-repeat url('./icons/arrow_up-focused.svg');
 }
 
-.button_align_left {
-    background: center no-repeat url('./icons/align_left.svg');
+.button_align_left_light_theme {
+    background: center no-repeat url('./icons/align_left_light_theme.svg');
 }
 
-.button_align_left:hover {
+.button_align_left_dark_theme {
+    background: center no-repeat url('./icons/align_left_dark_theme.svg');
+}
+
+.button_align_left_light_theme:hover, .button_align_left_dark_theme:hover {
     background: center no-repeat url('./icons/align_left_active.svg');
 }
 
-.button_align_right {
-    background: center no-repeat url('./icons/align_right.svg');
+.button_align_right_light_theme {
+    background: center no-repeat url('./icons/align_right_light_theme.svg');
 }
 
-.button_align_right:hover {
+.button_align_right_dark_theme {
+    background: center no-repeat url('./icons/align_right_dark_theme.svg');
+}
+
+.button_align_right_light_theme:hover, .button_align_right_dark_theme:hover {
     background: center no-repeat url('./icons/align_right_active.svg');
 }
 
-.button_align_center {
-    background: center no-repeat url('./icons/align_center.svg');
+.button_align_center_light_theme {
+    background: center no-repeat url('./icons/align_center_light_theme.svg');
 }
 
-.button_align_center:hover {
+.button_align_center_dark_theme {
+    background: center no-repeat url('./icons/align_center_dark_theme.svg');
+}
+
+.button_align_center_light_theme:hover, .button_align_center_dark_theme:hover {
     background: center no-repeat url('./icons/align_center_active.svg');
 }
 
-.button_text_color {
-    background: center no-repeat url('./icons/text_color.svg');
+.button_text_color_light_theme {
+    background: center no-repeat url('./icons/text_color_light_theme.svg');
+}
+
+.button_text_color_dark_theme {
+    background: center no-repeat url('./icons/text_color_dark_theme.svg');
+}
+
+.button_text_color_light_theme:hover, .button_text_color_dark_theme:hover {
+    background: center no-repeat url('./icons/text_color-focused.svg');
 }
 
 
-.button_undo:hover,
-.button_redo:hover,
-.button_delete:hover,
+.button_undo_light_theme:hover, .button_undo_dark_theme:hover,
+.button_redo_light_theme:hover, .button_redo_dark_theme:hover,
+.button_delete_light_theme:hover, .button_delete_dark_theme:hover,
 .button_sign:hover,
-.button_arrow_down:hover,
-.button_arrow_up:hover,
-.button_align_left:hover,
-.button_align_right:hover,
-.button_align_center:hover,
-.button_text_color:hover {
-    background-color: #181818;
+.button_arrow_down_light_theme:hover, .button_arrow_down_dark_theme:hover,
+.button_arrow_up_light_theme:hover, .button_arrow_up_dark_theme:hover, 
+.button_align_left_light_theme:hover, .button_align_left_dark_theme:hover,
+.button_align_right_light_theme:hover, .button_align_right_dark_theme:hover,
+.button_align_center_light_theme:hover, .button_align_center_dark_theme:hover,
+.button_text_color_light_theme:hover, .button_text_color_dark_theme:hover {
+    background-color: rgba(0, 0, 0, 0.5);
     cursor: pointer;
     color: #ff9100;
 }

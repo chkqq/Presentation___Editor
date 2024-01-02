@@ -34,16 +34,34 @@
 }
 
 .drop_down_active {
-    /* border-color: #ff9100; */
     color: #ff9100;
     background-color: rgba(0, 0, 0, 0.5);
 }
 
 .text_container::after {
-    content: url('./icons/arrow.svg');
     width: 11px;
     height: 6px;
     margin-left: 7px;
+}
+
+.text_container_active {
+    color: #ff9100!important;
+}
+
+.text_container_light_theme {
+    color: #505050;
+}
+
+.text_container_light_theme::after {
+    content: url('./icons/arrow_light_theme.svg');
+}
+
+.text_container_dark_theme {
+    color: #e9e7e7;
+}
+
+.text_container_dark_theme::after {
+    content: url('./icons/arrow_dark_theme.svg');
 }
 
 .text_container_active::after {

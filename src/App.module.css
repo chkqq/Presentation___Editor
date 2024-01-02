@@ -6,10 +6,12 @@
 
 .app_light_theme {
     background-color: #ffffff;
+    color: #505050;
 }
 
 .app_dark_theme {
     background-color: #212121;
+    color: #e9e7e7;
 }
 
 .app_content {

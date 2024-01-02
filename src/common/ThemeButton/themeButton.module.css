@@ -1,0 +1,34 @@
+.theme_button {
+  width: 41px;
+  height: 35px;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 5px;
+  background: center no-repeat none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 10px 10px;
+}
+
+.sun_dark_theme {
+  background: center no-repeat url('./icons/sun.png');
+}
+
+.sun_dark_theme:hover {
+  background: center no-repeat url('./icons/sun_focused.png');
+  background-color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.moon_light_theme {
+  background: center no-repeat url('./icons/moon.png');
+}
+
+.moon_light_theme:hover {
+  background: center no-repeat url('./icons/moon_focused.png');
+  background-color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}

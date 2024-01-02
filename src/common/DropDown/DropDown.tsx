@@ -1,5 +1,6 @@
 import styles from './DropDown.module.css';
 import { useState, useRef } from 'react';
+import { Editor } from '../../model/types';
 import { useClickOutside } from '../../core/hooks/useClickOutside';
 import { AppDispatch } from '../../model/store';
 import { addImage, addObject, } from '../../model/actionCreators';
@@ -7,11 +8,12 @@ import { connect } from 'react-redux';
 import { getBase64FromPicture } from '../../model/export';
 
 interface DropDownProps {
+    isDarkTheme: boolean,
     addObject: (element: string) => void,
     addImage: (urlImage: string) => void,
 }
 
-const DropDown = ({addObject, addImage}: DropDownProps) => {
+const DropDown = ({isDarkTheme, addObject, addImage}: DropDownProps) => {
     const [opened, setOpened] = useState(false);
     const dropDownRef = useRef<HTMLDivElement>(null)
 
@@ -26,7 +28,7 @@ const DropDown = ({addObject, addImage}: DropDownProps) => {
                 onClick = {() => setOpened(!opened)}
             >
                 <div
-                    className = {`${styles.text_container} ${opened && styles.text_container_active}`}
+                    className = {[`${styles.text_container} ${opened && styles.text_container_active}`, isDarkTheme ? styles.text_container_light_theme : styles.text_container_dark_theme].join(' ')}
                 >
                     Вставка
                 </div>
@@ -156,6 +158,12 @@ const DropDownOptionsToAdd = ({ activeFigure, onClick, addObject, addImage }: Dr
     )
 }
 
+function mapStateToProps(state: Editor) {
+    return {
+        isDarkTheme: state.isDarkTheme,
+    }
+}
+
 const mapDispatchToProps = (dispatch: AppDispatch) => {
     return {
         addObject: (element: string, textValue?: string) => dispatch(addObject(element, textValue)),
@@ -163,4 +171,4 @@ const mapDispatchToProps = (dispatch: AppDispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(DropDown)
+export default connect(mapStateToProps, mapDispatchToProps)(DropDown)
