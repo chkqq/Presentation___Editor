@@ -83,7 +83,6 @@ const ToolBar = ({
                 {
                     rename ?
                         <TextField
-                            size="big"
                             onKeyUp = {(value) => {
                                 if (value !== '') {
                                     changeTitle(value);

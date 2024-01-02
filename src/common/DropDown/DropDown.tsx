@@ -55,14 +55,12 @@ interface DropDownOptionsProps {
 const DropDownOptions = ({onClick, addObject, addImage}: DropDownOptionsProps) => {
     const [activeFigure, setActiveFigure] = useState(false);
     const [activeImage, setActiveImage] = useState(false);
-    const [activeWeather, setActiveWeather] = useState(false);
     return (
         <div className={styles.options_container}>
             <div
                 className = {`${styles.figure} ${activeFigure && styles.figure_active}`}
                 onClick = {() => {
                     setActiveFigure(!activeFigure);
-                    setActiveWeather(false)
                     setActiveImage(false);
                 }}
             >
@@ -104,7 +102,6 @@ const DropDownOptions = ({onClick, addObject, addImage}: DropDownOptionsProps) =
             <DropDownOptionsToAdd
                 activeFigure = {activeFigure}
                 activeImage = {activeImage}
-                activeWeather = {activeWeather}
                 onClick = {onClick}
                 addObject={addObject}
                 addImage={addImage}
@@ -119,7 +116,6 @@ interface DropDownOptionsToAddProps {
     onClick: () => void,
     addObject: (element: string, textValue?: string) => void,
     addImage: (urlImage: string) => void,
-    activeWeather: boolean
 }
 
 const DropDownOptionsToAdd = ({ activeFigure, onClick, addObject, addImage }: DropDownOptionsToAddProps) => {

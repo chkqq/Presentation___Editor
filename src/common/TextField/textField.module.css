@@ -1,34 +1,21 @@
 .input {
     font-family: Roboto;
     font-weight: 500;
-    font-size: 13px;
-
-    color: #c6c6c6;
-    border: 1px solid;
-    border-color: #585858;
-    background-color: #585858;
+    font-size: 25px;
+    border: none;
+    background-color: transparent;
     border-radius: 5px;
-
     padding: 8px 10px;
     box-sizing: border-box;
-}
-
-.small {
-    height: 35px;
-    width: 100px;
-}
-
-.big {
+    outline: none;
     height: 46px;
-    width: 375px;
+    width: 275px;
 }
 
-.input:hover {
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.5);
+.input_light_theme {
+    color: #505050;
 }
 
-.input:focus {
-    border-color: #2824EE;
+.input_dark_theme {
+    color: #e9e7e7;
 }
-
