@@ -1,0 +1,40 @@
+{
+    "topToolButtons": {
+        "rename": "Rename",
+        "save": "Save",
+        "download": "Download",
+        "renamePlaceholder": "Enter the title...",
+        "ChangeLanguage": "Language",
+        "russianLanguage": "Russian",
+        "englishLanguage": "English"
+    },
+    "mainToolButtons": {
+        "insert": "Insert",
+        "figure": "Figure",
+        "text": "Text",
+        "background": "Background",
+        "chooseBackgroundImage": "Choose Image",
+        "deleteBackground": "Delete Background",
+        "figureSettings": {
+            "pouringFigure": "Pouring figure",
+            "pouringTitle": "Pouring",
+            "deletePouring": "Delete Pouring",
+            "figureOutline": "Figure outline",
+            "outlineTitle": "Outline",
+            "outlineThickness": "Thickness",
+            "deleteOutline": "Delete Outline"
+        },
+        "textSettings": {
+            "font": "Font",
+            "fontSize": "Size",
+            "fontWeight": "Weight"
+        },
+        "preview": "Preview",
+        "downloadPDF": "Download PDF"
+    },
+    "general": {
+        "color": "Color",
+        "image": "Image",
+        "accept": "Accept"
+    }
+}

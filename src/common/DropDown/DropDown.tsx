@@ -1,11 +1,12 @@
 import styles from './DropDown.module.css';
-import { useState, useRef } from 'react';
+import { useState, useRef, useContext } from 'react';
 import { Editor } from '../../model/types';
 import { useClickOutside } from '../../core/hooks/useClickOutside';
 import { AppDispatch } from '../../model/store';
 import { addImage, addObject, } from '../../model/actionCreators';
 import { connect } from 'react-redux';
 import { getBase64FromPicture } from '../../model/export';
+import { LocaleContext } from '../../App';
 
 interface DropDownProps {
     isDarkTheme: boolean,
@@ -16,6 +17,7 @@ interface DropDownProps {
 const DropDown = ({isDarkTheme, addObject, addImage}: DropDownProps) => {
     const [opened, setOpened] = useState(false);
     const dropDownRef = useRef<HTMLDivElement>(null)
+    const localeContext = useContext(LocaleContext);
 
     useClickOutside(dropDownRef, () => setOpened(false));
 
@@ -30,7 +32,7 @@ const DropDown = ({isDarkTheme, addObject, addImage}: DropDownProps) => {
                 <div
                     className = {[`${styles.text_container} ${opened && styles.text_container_active}`, isDarkTheme ? styles.text_container_light_theme : styles.text_container_dark_theme].join(' ')}
                 >
-                    Вставка
+                    {localeContext.locale.localization.mainToolButtons.insert}
                 </div>
             </div>
             {
@@ -55,6 +57,8 @@ interface DropDownOptionsProps {
 const DropDownOptions = ({onClick, addObject, addImage}: DropDownOptionsProps) => {
     const [activeFigure, setActiveFigure] = useState(false);
     const [activeImage, setActiveImage] = useState(false);
+    const localeContext = useContext(LocaleContext);
+
     return (
         <div className={styles.options_container}>
             <div
@@ -64,7 +68,7 @@ const DropDownOptions = ({onClick, addObject, addImage}: DropDownOptionsProps) =
                     setActiveImage(false);
                 }}
             >
-                Фигура
+                {localeContext.locale.localization.mainToolButtons.figure}
             </div>
             <div
                 className = {`${styles.image} ${activeImage && styles.image}`}
@@ -86,7 +90,7 @@ const DropDownOptions = ({onClick, addObject, addImage}: DropDownOptionsProps) =
                     onClick()
                 }}
             >
-                Изображение
+                {localeContext.locale.localization.general.image}
             </div>
             <div
                 className = {styles.text}
@@ -97,7 +101,7 @@ const DropDownOptions = ({onClick, addObject, addImage}: DropDownOptionsProps) =
                     onClick();
                 }}
             >
-                Текст
+                {localeContext.locale.localization.mainToolButtons.text}
             </div>
             <DropDownOptionsToAdd
                 activeFigure = {activeFigure}

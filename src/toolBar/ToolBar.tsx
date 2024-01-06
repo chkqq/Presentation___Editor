@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { connect } from 'react-redux';
 import { AppDispatch, uploadDocFunction } from '../model/store'
 
 import Button from "../common/Button/Button"
 import DropDown from "../common/DropDown/DropDown"
 import Knob from "../common/Knob/Knob"
-import TextField from "../common/TextField/textField" 
-import themeButton from "../common/ThemeButton/themeButton";
+import TextField from "../common/TextField/textField"
 
+import { getL18nObject, l18nLocale } from '../i18n/i18n';
+import { LocaleContext } from "../App";
 import { Editor, Slide, SlideElement } from "../model/types"
 
 import styles from "./ToolBar.module.css"
@@ -57,10 +58,22 @@ const ToolBar = ({
     changeTextAlign
 }: ToolBarProps) => {
     const [rename, setRename] = useState(false);
+    const localeContext = useContext(LocaleContext);
+    const [dropdownVisible, setDropdownVisible] = useState(false);
+    const [opened, setOpened] = useState(false);
+
+    const toggleDropdown = () => {
+        setDropdownVisible(!dropdownVisible);
+    };
+
+    const handleLanguageClick = (language: l18nLocale) => {
+        localeContext.changeLocale?.(getL18nObject(language));
+        setDropdownVisible(false);
+    };
 
     let textSelected = true;
     let figureSelected = true;
-    slide.selectedElementsIds.forEach(id => 
+    slide.selectedElementsIds.forEach(id =>
         {
             if(slide.elements.find(element => element.elementId === id)?.elementType === 'figure')
             {
@@ -70,11 +83,10 @@ const ToolBar = ({
             {
                 figureSelected = false;
             }
-        }   
+        }
     )
     const [drawBlock, setDrawBlock] = useState('absent')
     const firstSelectedElement: SlideElement | undefined = slide.elements.find(element => element.elementId === slide.selectedElementsIds[0]);
-    
 
     return (
         <div className={styles.toolBar}>
@@ -89,7 +101,7 @@ const ToolBar = ({
                                 }
                                 setRename(false)
                             }}
-                            placeholder = 'Введите название...'
+                            placeholder = {localeContext.locale.localization.topToolButtons.renamePlaceholder}
                          />
                         : <p className={styles.name}>{ title }</p>
                 }
@@ -98,28 +110,61 @@ const ToolBar = ({
                     <div className={styles.outline_button}>
                         <Button
                             viewStyle='outline'
-                            text='Переименовать'
+                            text={localeContext.locale.localization.topToolButtons.rename}
                             onClick={() => setRename(!rename)}
                         />
                     </div>
                     <div className={styles.outline_button}>
                         <Button
                             viewStyle='outline'
-                            text='Сохранить'
+                            text={localeContext.locale.localization.topToolButtons.save}
                             onClick={() => saveDoc()}
                         />
                     </div>
                     <div className={styles.outline_button}>
                         <Button
                             viewStyle='outline'
-                            text='Загрузить'
+                            text={localeContext.locale.localization.topToolButtons.download}
                             onClick={() => uploadDoc()}
                         />
                     </div>
                     <div className={styles.outline_button}>
-                        <ThemeButton 
+                        <button
+                            className={[`${styles.language_selection} ${dropdownVisible && styles.language_selection_active}`,
+                            isDarkTheme
+                            ? styles.language_selection_light_theme
+                            : styles.language_selection_dark_theme].join(' ')}
+                            onClick={toggleDropdown}
+                        >
+                            {localeContext.locale.localization.topToolButtons.ChangeLanguage}
+                        </button>
+                        {dropdownVisible && (
+                        <div className={[styles.drop_down_box, isDarkTheme ? styles.drop_down_box_light_theme : styles.drop_down_box_dark_theme].join(' ')}>
+                            <button
+                                className={[styles.language_buttons,
+                                isDarkTheme
+                                ? styles.language_buttons_light_theme
+                                : styles.language_buttons_dark_theme ].join(' ')}
+                                onClick={() => handleLanguageClick("ru_RU")}
+                            >
+                                {localeContext.locale.localization.topToolButtons.russianLanguage}
+                            </button>
+                            <button
+                                className={[styles.language_buttons,
+                                isDarkTheme
+                                ? styles.language_buttons_light_theme
+                                : styles.language_buttons_dark_theme ].join(' ')}
+                                onClick={() => handleLanguageClick("en_EN")}
+                            >
+                                {localeContext.locale.localization.topToolButtons.englishLanguage}
+                            </button>
+                        </div>
+                        )}
+                    </div>
+                    <div className={styles.outline_button}>
+                        <ThemeButton
                         onClick={toggleTheme}
-                        />     
+                        />
                     </div>
                 </div>
             </div>
@@ -170,13 +215,13 @@ const ToolBar = ({
                     <div className={styles.outline_button}>
                         <Button
                             viewStyle='outline'
-                            text='Фон'
+                            text={localeContext.locale.localization.mainToolButtons.background}
                             onClick={() => setDrawBlock('backgroundSlide')}
                         />
                     </div>
                     {
                         (firstSelectedElement) &&
-                        <OptionalTools 
+                        <OptionalTools
                             textSelected = {textSelected}
                             figureSelected = {figureSelected}
                             firstSelectedElement = {firstSelectedElement}
@@ -192,14 +237,14 @@ const ToolBar = ({
                     <div className={styles.outline_button}>
                         <Button
                             viewStyle='outline'
-                            text='Просмотр'
+                            text={localeContext.locale.localization.mainToolButtons.preview}
                             onClick={() => {switchPreview()}}
                         />
                     </div>
                     <div className={styles.outline_button}>
                         <Button
                             viewStyle='outline'
-                            text='Экспорт'
+                            text={localeContext.locale.localization.mainToolButtons.downloadPDF}
                             onClick={() => exportDoc()}
                         />
                     </div>
@@ -229,7 +274,7 @@ interface OptionalToolsProps {
     changeTextAlign: (align: "left" | "center" | "right") => void
 }
 
-function OptionalTools({ 
+function OptionalTools({
     textSelected,
     figureSelected,
     firstSelectedElement,
@@ -239,20 +284,22 @@ function OptionalTools({
     changeTextWeight,
     changeTextAlign
 }: OptionalToolsProps) {
+    const localeContext = useContext(LocaleContext);
+
     if (!textSelected && figureSelected){
         return (
             <div className={styles.optional_tools_container}>
                 <div className = {styles.outline_button}>
                     <Button
                         viewStyle = 'outline'
-                        text = 'Заливка фигуры'
+                        text = {localeContext.locale.localization.mainToolButtons.figureSettings.pouringFigure}
                         onClick = {() => onClick('fillFigure')}
                     />
                 </div>
                 <div className={styles.outline_button}>
                     <Button
                         viewStyle='outline'
-                        text='Контур фигуры'
+                        text={localeContext.locale.localization.mainToolButtons.figureSettings.figureOutline}
                         onClick = {() => onClick('strokeFigure')}
                     />
                 </div>
@@ -262,7 +309,7 @@ function OptionalTools({
     else if (textSelected && !figureSelected && firstSelectedElement.textProps) {
         return (
             <div className={styles.optional_tools_container}>
-                {/* <p className={styles.optional_tools_text}>Шрифт</p> */}
+                <p className={styles.optional_tools_text}>{localeContext.locale.localization.mainToolButtons.textSettings.font}</p>
                 <select
                   className={styles.optional_tools_select}
                   onChange={(e) => changeTextFont(e.target.value)}
@@ -276,31 +323,31 @@ function OptionalTools({
                   <option value="Ledger">Ledger</option>
                   <option value="Martel">Martel</option>
                 </select>
-                <p className={styles.optional_tools_text}>Размер шрифта</p>
-                <Knob 
-                    value={firstSelectedElement.textProps.fontSize} 
-                    step = {1}   
+                <p className={styles.optional_tools_text}>{localeContext.locale.localization.mainToolButtons.textSettings.fontSize}</p>
+                <Knob
+                    value={firstSelectedElement.textProps.fontSize}
+                    step = {1}
                     onClick={(value) => changeTextSize(value)}
                 />
-                <p className={styles.optional_tools_text}>Жирность</p>
-                <Knob 
-                    value={firstSelectedElement.textProps.fontWeight} 
-                    step = {100}   
+                <p className={styles.optional_tools_text}>{localeContext.locale.localization.mainToolButtons.textSettings.fontWeight}</p>
+                <Knob
+                    value={firstSelectedElement.textProps.fontWeight}
+                    step = {100}
                     onClick={(value) => changeTextWeight(value)}
                 />
-                <Button 
+                <Button
                     viewStyle="align_left"
                     onClick={() => changeTextAlign('left')}
                 />
-                <Button 
+                <Button
                     viewStyle="align_center"
                     onClick={() => changeTextAlign('center')}
                 />
-                <Button 
+                <Button
                     viewStyle="align_right"
                     onClick={() => changeTextAlign('right')}
                 />
-                <Button 
+                <Button
                     viewStyle="text_color"
                     onClick={() => onClick('textColor')}
                 />
@@ -317,7 +364,7 @@ function OptionalTools({
 
 function mapStateToProps(state: Editor) {
     const indexSlide: number = state.presentation.slides.findIndex(slide => slide.slideId === state.presentation.currentSlideIds[0]);
-    return { 
+    return {
         slide: state.presentation.slides[indexSlide],
         title: state.presentation.title,
         isDarkTheme: state.isDarkTheme

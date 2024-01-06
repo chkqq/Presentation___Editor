@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { Editor } from "../../model/types";
 import { SlideElement } from "../../model/types"
 import Button from "../../common/Button/Button";
@@ -10,6 +10,7 @@ import { AppDispatch } from "../../model/store";
 import { changeFillColor, changeStrokeColor, changeStrokeWidth, changeTextProps, setBackground } from "../../model/actionCreators";
 import { useClickOutside } from '../../core/hooks/useClickOutside'
 import { getBase64FromPicture } from "../../model/export";
+import { LocaleContext } from "../../App";
 
 interface EditColorWindowProps {
     isDarkTheme: boolean,
@@ -36,18 +37,19 @@ function EditColorWindow({
 }: EditColorWindowProps) {
     const frameRef = useRef<HTMLDivElement>(null)
     useClickOutside(frameRef, onClick)
-    
+    const localeContext = useContext(LocaleContext);
+
     const [selectedColor, setSelectedColor] = useState('')
     let removeButtonText: string = '';
     switch(drawMode) {
         case 'backgroundSlide':
-            removeButtonText = 'Удалить фон';
+            removeButtonText = localeContext.locale.localization.mainToolButtons.deleteBackground;
             break
         case 'fillFigure':
-            removeButtonText = 'Удалить заливку';
+            removeButtonText = localeContext.locale.localization.mainToolButtons.figureSettings.deletePouring;
             break
         case 'strokeFigure':
-            removeButtonText = 'Удалить контур';
+            removeButtonText = localeContext.locale.localization.mainToolButtons.figureSettings.deleteOutline;
             break
     }
     return (
@@ -59,34 +61,34 @@ function EditColorWindow({
                 {
                     drawMode === 'backgroundSlide' &&
                         <div className={styles.head_text}>
-                            Фон
+                            {localeContext.locale.localization.mainToolButtons.background}
                         </div>
                 }
                 {
                     drawMode === 'fillFigure' &&
                         <div className={styles.head_text}>
-                            Заливка
+                            {localeContext.locale.localization.mainToolButtons.figureSettings.pouringTitle}
                         </div>
                 }
                 {
                     drawMode === 'strokeFigure' &&
                         <div className={styles.head_text}>
-                            Контур
+                            {localeContext.locale.localization.mainToolButtons.figureSettings.outlineTitle}
                         </div>
                 }
                 {
                     drawMode === 'textColor' &&
                         <div className={styles.head_text}>
-                            Текст
+                            {localeContext.locale.localization.mainToolButtons.text}
                         </div>
                 }
                 <hr className={styles.hr} />
                 <div className={styles.palette_block}>
                     <div className={styles.secondary_text}>
-                        Цвет
+                        {localeContext.locale.localization.general.color}
                     </div>
                     <div>
-                        <Palette 
+                        <Palette
                             sendValue = {(colorValue) => setSelectedColor(colorValue)}
                         />
                     </div>
@@ -95,12 +97,12 @@ function EditColorWindow({
                     drawMode === 'backgroundSlide' &&
                         <div className={styles.change_value}>
                             <div className={styles.secondary_text}>
-                                Изображение
+                                {localeContext.locale.localization.general.image}
                             </div>
 
                             <Button
                                 viewStyle="outline"
-                                text="Выбрать изображение"
+                                text={localeContext.locale.localization.mainToolButtons.chooseBackgroundImage}
                                 onClick={() => {
                                     const inputFile = document.createElement('input');
                                     inputFile.type = 'file';
@@ -125,14 +127,14 @@ function EditColorWindow({
                     (drawMode === 'strokeFigure' && firstSelectedElement) &&
                         <div className={styles.change_value}>
                             <div className={styles.secondary_text}>
-                                Толщина
+                                {localeContext.locale.localization.mainToolButtons.figureSettings.outlineThickness}
                             </div>
                             <Knob
                                 value = {firstSelectedElement.figure !== undefined ? firstSelectedElement.figure.strokeWidth: 0}
                                 step = {1}
                                 onClick={(value) => changeStrokeWidth(value)}
                             />
-                        </div>    
+                        </div>
                 }
                 <hr className={styles.hr} />
                 <div className={styles.ready_button_block}>
@@ -156,7 +158,7 @@ function EditColorWindow({
                     />
                     <Button
                         viewStyle="default"
-                        text="Готово"
+                        text={localeContext.locale.localization.general.accept}
                         onClick={() => {
                             switch(drawMode) {
                                 case 'backgroundSlide':
@@ -168,7 +170,7 @@ function EditColorWindow({
                                 case 'strokeFigure':
                                     changeStrokeColor(selectedColor);
                                     break
-                                case 'textColor': 
+                                case 'textColor':
                                     setTextColor(selectedColor);
                                     break
                                 }

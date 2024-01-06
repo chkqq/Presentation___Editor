@@ -1,0 +1,40 @@
+{
+    "topToolButtons": {
+        "rename": "Переименовать",
+        "save": "Сохранить",
+        "download": "Скачать",
+        "renamePlaceholder": "Введите название...",
+        "ChangeLanguage": "Язык",
+        "russianLanguage": "Русский",
+        "englishLanguage": "Английский"
+    },
+    "mainToolButtons": {
+        "insert": "Вставка",
+        "figure": "Фигура",
+        "text": "Текст",
+        "background": "Фон",
+        "chooseBackgroundImage": "Выбрать изображение",
+        "deleteBackground": "Удалить фон",
+        "figureSettings": {
+            "pouringFigure": "Заливка фигуры",
+            "pouringTitle": "Заливка",
+            "deletePouring": "Удалить заливку",
+            "figureOutline": "Контур фигуры",
+            "outlineTitle": "Контур",
+            "outlineThickness": "Толщина",
+            "deleteOutline": "Удалить контур"
+        },
+        "textSettings": {
+            "font": "Шрифт",
+            "fontSize": "Размер",
+            "fontWeight": "Жирность"
+        },
+        "preview": "Просмотр",
+        "downloadPDF": "Скачать PDF"
+    },
+    "general": {
+        "color": "Цвет",
+        "image": "Изображение",
+        "accept": "Готово"
+    }
+}

@@ -8,7 +8,21 @@ import { AppDispatch } from './model/store';
 import SideBar from './sideBar/sideBar'
 import { switchPreview } from './model/actionCreators';
 import { connect } from 'react-redux';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, createContext } from 'react';
+import { getL18nObject, l18nType } from './i18n/i18n';
+
+export type LocaleContextType = {
+    locale: l18nType;
+    changeLocale: React.Dispatch<React.SetStateAction<l18nType>> | undefined;
+};
+
+const initialLocaleContext: LocaleContextType = {
+    locale: getL18nObject('ru_RU'),
+    changeLocale: undefined,
+};
+
+export const LocaleContext = createContext(initialLocaleContext);
+
 
 interface AppProps {
     statePreview: Boolean,
@@ -25,6 +39,8 @@ function App({
     slideId,
     switchPreview
 }: AppProps) {
+    const [locale, changeLocale] = useState(getL18nObject('ru_RU'));
+
     const indexSlideRef = useRef(0)
         useEffect(() => {
             if (statePreview) {
@@ -42,7 +58,7 @@ function App({
                 case 'ArrowRight':
                     if (indexSlideRef.current !== slides.length - 1) {
                         indexSlideRef.current += 1
-                        setIndexSlide(indexSlideRef.current);    
+                        setIndexSlide(indexSlideRef.current);
                     }
                     break;
                 case 'ArrowLeft':
@@ -50,9 +66,9 @@ function App({
                         indexSlideRef.current -= 1;
                         setIndexSlide(indexSlideRef.current);
                     }
-                    break;            
+                    break;
             }
-        }   
+        }
     const slideRef = useRef(null)
     const [indexSlide, setIndexSlide] = useState(slides.findIndex(slide => slide.slideId === slideId));
     const slidesList = slides.map((slide) => (
@@ -63,38 +79,41 @@ function App({
             <SlideView
                 slideElements = {
                     slide.elements.map((slideElement) =>
-                        <li key = {slideElement.elementId}> 
+                        <li key = {slideElement.elementId}>
                             <SlidesElement
                                 slideId = {slide.slideId}
                                 elementId= {slideElement.elementId}
                                 active = {false}
                                 slideRef={slideRef}
                             />
-                        </li> 
+                        </li>
                     )}
-                background = {slide.background}   
+                background = {slide.background}
             />
-        </div>      
+        </div>
     ))
     return (
-        <div className={[styles.app_container, isDarkTheme ? styles.app_light_theme : styles.app_dark_theme].join(' ')}>
-            {
-                statePreview ?
-                <div  className={styles.preview_container}> 
-                    <div className={styles.preview_slide}> 
-                        {slidesList[indexSlide]} 
-                    </div>        
-                </div>
-                :
-                <div className={styles.app_content}>
-                    <ToolBar />
-                    <div className={styles.pres_view}>
-                        <SideBar />
-                        <SlideEditor />
+        <LocaleContext.Provider value={{ locale, changeLocale }}>
+            <div className={[styles.app_container, isDarkTheme ? styles.app_light_theme : styles.app_dark_theme].join(' ')}>
+                {
+                    statePreview ?
+                    <div  className={styles.preview_container}>
+                        <div className={styles.preview_slide}>
+                            {slidesList[indexSlide]}
+                        </div>
                     </div>
-                </div>
-            }
-        </div>
+                    :
+                    <div className={styles.app_content}>
+                        <ToolBar />
+                        <div className={styles.pres_view}>
+                            <SideBar />
+                            <SlideEditor />
+                        </div>
+                    </div>
+                }
+            </div>
+        </LocaleContext.Provider>
+
     )
 }
 
