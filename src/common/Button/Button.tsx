@@ -4,7 +4,7 @@ import styles from './Button.module.css';
 
 interface ButtonProps {
     isDarkTheme: boolean,
-    viewStyle: 'default' | 'outline' | 'delete' | 'redo' | 'undo' | 'arrow_down' | 'arrow_up' | 'sign' | 'align_left' | 'align_center' | 'align_right' | 'text_color',
+    viewStyle: 'default' | 'outline' | 'delete' | 'redo' | 'undo' | 'arrow_down' | 'arrow_up' | 'sign' | 'align_left' | 'align_center' | 'align_right' | 'text_color' | 'italic' | 'text_decoration' | 'underline' | 'overline' | 'through_line' | 'none',
     text?: string,
     onClick: () => void
 }
@@ -28,6 +28,12 @@ const Button = ({
         case 'align_center': {buttonStyle = isDarkTheme ? styles.button_align_center_light_theme : styles.button_align_center_dark_theme; break}
         case 'align_right': {buttonStyle = isDarkTheme ? styles.button_align_right_light_theme : styles.button_align_right_dark_theme; break}
         case 'text_color': {buttonStyle = isDarkTheme ? styles.button_text_color_light_theme : styles.button_text_color_dark_theme; break}
+        case 'italic': {buttonStyle = isDarkTheme ? styles.button_italic_light_theme : styles.button_italic_dark_theme; break}
+        case 'text_decoration': {buttonStyle = isDarkTheme ? styles.button_text_decoration_light_theme : styles.button_text_decoration_dark_theme; break}
+        case 'underline': {buttonStyle = isDarkTheme ? styles.button_underline_light_theme : styles.button_underline_dark_theme; break}
+        case 'overline': {buttonStyle = isDarkTheme ? styles.button_overline_light_theme : styles.button_overline_dark_theme; break}
+        case 'through_line': {buttonStyle = isDarkTheme ? styles.button_through_line_light_theme : styles.button_through_line_dark_theme; break}
+        case 'none': {buttonStyle = isDarkTheme ? styles.button_none_light_theme : styles.button_none_dark_theme; break}
     }
     return (
         <button

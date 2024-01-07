@@ -35,9 +35,9 @@ type SlideElement = {
     elementId: string;
     elementType: "text" | "figure" | "image";
     position: Position;
-    angle: number; 
+    angle: number;
     isSelected?: boolean;
-    size: Size; 
+    size: Size;
     image?: string;
     textProps?: TextType;
     figure?: FigureType;
@@ -49,7 +49,9 @@ type TextType = {
     textValue: string;
     fontSize: number;
     fontWeight: number;
-    align: "left" | "center" | "right"
+    align: "left" | "center" | "right";
+    fontStyle: "normal" | "italic";
+    textDecoration: "underline" | "none" | "line-through" | "overline";
 }
 
 type FigureType = {

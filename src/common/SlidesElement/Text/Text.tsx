@@ -18,7 +18,7 @@ const Text = ({
     placeholder
 }: TextProps) => {
     const [textValue, setTextValue] = useState(text.textValue)
-    
+
     return (
         <textarea
             value = {text.textValue}
@@ -34,8 +34,10 @@ const Text = ({
                 'color': text.textColor,
                 'width': size.width,
                 'height': size.height,
-                'textAlign': text.align 
-            }}    
+                'textAlign': text.align,
+                'fontStyle': text.fontStyle,
+                'textDecoration': text.textDecoration
+            }}
         >{textValue}</textarea>
     )
 }

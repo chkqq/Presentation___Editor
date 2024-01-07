@@ -62,7 +62,9 @@ export type ActionType = {
         textValue?: string,
         fontSize?: number,
         fontWeight?: number,
-        align?: "left" | "center" | "right"
+        align?: "left" | "center" | "right",
+        fontStyle?: "normal" | "italic",
+        textDecoration?: "underline" | "none" | "line-through" | "overline"
     },
     urlImage?: string,
     newWidth?: number,

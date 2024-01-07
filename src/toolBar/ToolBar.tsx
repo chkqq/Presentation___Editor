@@ -34,7 +34,9 @@ type ToolBarProps = {
     changeTextSize: (fontSize: number) => void,
     changeTextWeight: (fontWeight: number) => void,
     changeTitle: (newTitle: string) => void,
-    changeTextAlign: (align: "left" | "center" | "right") => void
+    changeTextAlign: (align: "left" | "center" | "right") => void,
+    changeTextFontStyle: (fontStyle: "normal" | "italic") => void,
+    changeTextDecoration: (textDecoration: "underline" | "none" | "line-through" | "overline") => void
 }
 
 const ToolBar = ({
@@ -55,12 +57,13 @@ const ToolBar = ({
     changeTextSize,
     changeTitle,
     changeTextWeight,
-    changeTextAlign
+    changeTextAlign,
+    changeTextFontStyle,
+    changeTextDecoration
 }: ToolBarProps) => {
     const [rename, setRename] = useState(false);
     const localeContext = useContext(LocaleContext);
     const [dropdownVisible, setDropdownVisible] = useState(false);
-    const [opened, setOpened] = useState(false);
 
     const toggleDropdown = () => {
         setDropdownVisible(!dropdownVisible);
@@ -230,6 +233,8 @@ const ToolBar = ({
                             changeTextSize={changeTextSize}
                             changeTextWeight={changeTextWeight}
                             changeTextAlign={changeTextAlign}
+                            changeTextFontStyle={changeTextFontStyle}
+                            changeTextDecoration={changeTextDecoration}
                         />
                     }
                 </div>
@@ -271,7 +276,9 @@ interface OptionalToolsProps {
     changeTextFont: (font: string) => void,
     changeTextSize: (fontSize: number) => void,
     changeTextWeight: (fontWeight: number) => void,
-    changeTextAlign: (align: "left" | "center" | "right") => void
+    changeTextAlign: (align: "left" | "center" | "right") => void,
+    changeTextFontStyle: (fontStyle: "normal" | "italic") => void,
+    changeTextDecoration: (textDecoration: "underline" | "none" | "line-through" | "overline") => void
 }
 
 function OptionalTools({
@@ -282,9 +289,14 @@ function OptionalTools({
     changeTextFont,
     changeTextSize,
     changeTextWeight,
-    changeTextAlign
+    changeTextAlign,
+    changeTextFontStyle,
+    changeTextDecoration
 }: OptionalToolsProps) {
     const localeContext = useContext(LocaleContext);
+
+    const [fontStyle, setFontStyle] = useState('normal');
+    const [textDecoration, setTextDecoration] = useState('none');
 
     if (!textSelected && figureSelected){
         return (
@@ -351,6 +363,30 @@ function OptionalTools({
                     viewStyle="text_color"
                     onClick={() => onClick('textColor')}
                 />
+                <Button
+                    viewStyle="underline"
+                    onClick={() => {
+                        const newTextDecoration = textDecoration === 'underline' ? 'none': 'underline';
+                        setTextDecoration(newTextDecoration);
+                        changeTextDecoration(newTextDecoration);
+                    }}
+                />
+                <Button
+                    viewStyle="through_line"
+                    onClick={() => {
+                        const newTextDecoration = textDecoration === 'line-through' ? 'none': 'line-through';
+                        setTextDecoration(newTextDecoration);
+                        changeTextDecoration(newTextDecoration);
+                    }}
+                />
+                <Button
+                    viewStyle="italic"
+                    onClick={() => {
+                        const newFontStyle = fontStyle === 'italic' ? 'normal' : 'italic';
+                        setFontStyle(newFontStyle);
+                        changeTextFontStyle(newFontStyle);
+                    }}
+                />
             </div>
         )
     }
@@ -387,7 +423,9 @@ const mapDispatchToProps = (dispatch: AppDispatch) => {
         changeTextSize: (fontSize: number) => dispatch(changeTextProps(undefined, undefined, undefined, fontSize)),
         changeTextWeight: (fontWeight: number) => dispatch(changeTextProps(undefined, undefined, undefined, undefined, fontWeight)),
         changeTextAlign: (align: "left" | "center" | "right") => dispatch(changeTextProps(undefined, undefined, undefined, undefined, undefined, align)),
-        changeTitle: (newTitle: string) => dispatch(changeTitle(newTitle)),
+        changeTextFontStyle: (fontStyle: "normal" | "italic") => dispatch(changeTextProps(undefined, undefined, undefined, undefined, undefined, undefined, fontStyle)),
+        changeTextDecoration: (textDecoration: "underline" | "none" | "line-through" | "overline") => dispatch(changeTextProps(undefined, undefined, undefined, undefined, undefined, undefined, undefined, textDecoration)),
+        changeTitle: (newTitle: string) => dispatch(changeTitle(newTitle))
     }
 }
 

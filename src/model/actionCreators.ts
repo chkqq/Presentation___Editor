@@ -117,9 +117,8 @@ function addObject(element: string, textValue?: string) {
         type: 'ADD_OBJECT',
         addObjectArgs: {
             element,
-            textValue    
+            textValue
         }
-        
     }
 }
 
@@ -188,7 +187,9 @@ function changeTextProps(
     textValue?: string,
     fontSize?: number,
     fontWeight?: number,
-    align?: "left" | "center" | "right"
+    align?: "left" | "center" | "right",
+    fontStyle?: "normal" | "italic",
+    textDecoration?: "underline" | "none" | "line-through" | "overline"
 ) {
     return {
         type: 'CHANGE_TEXT_PROPS',
@@ -198,7 +199,9 @@ function changeTextProps(
             textValue,
             fontSize,
             fontWeight,
-            align
+            align,
+            fontStyle,
+            textDecoration
         }
     }
 }

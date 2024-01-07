@@ -5,7 +5,6 @@
     font-family: Roboto;
     font-weight: 500;
     font-size: 13px;
-
     color: #c6c6c6;
 
     box-sizing: border-box;
@@ -150,17 +149,94 @@
     background: center no-repeat url('./icons/text_color-focused.svg');
 }
 
+.button_italic_light_theme {
+    background: center no-repeat url('./icons/italic_light_theme.png');
+}
+
+.button_italic_dark_theme {
+    background: center no-repeat url('./icons/italic_dark_theme.png');
+}
+
+.button_italic_light_theme:hover, .button_italic_dark_theme:hover {
+    background: center no-repeat url('./icons/italic-focused.png');
+}
+
+.button_text_decoration_light_theme {
+    background: center no-repeat url('./icons/text_decoration_light_theme.png');
+}
+
+.button_text_decoration_dark_theme {
+    background: center no-repeat url('./icons/text_decoration_dark_theme.png');
+}
+
+.button_text_decoration_light_theme:hover, .button_text_decoration_dark_theme:hover {
+    background: center no-repeat url('./icons/text_decoration-focused.png');
+}
+
+.button_underline_light_theme {
+    background: center no-repeat url('./icons/underline_light_theme.png');
+}
+
+.button_underline_dark_theme {
+    background: center no-repeat url('./icons/underline_dark_theme.png');
+}
+
+.button_underline_light_theme:hover, .button_underline_dark_theme:hover {
+    background: center no-repeat url('./icons/underline-focused.png');
+}
+
+.button_overline_light_theme {
+    background: center no-repeat url('./icons/overline_light_theme.png');
+}
+
+.button_overline_dark_theme {
+    background: center no-repeat url('./icons/overline_dark_theme.png');
+}
+
+.button_overline_light_theme:hover, .button_overline_dark_theme:hover {
+    background: center no-repeat url('./icons/overline-focused.png');
+}
+
+.button_through_line_light_theme {
+    background: center no-repeat url('./icons/through_line_light_theme.png');
+}
+
+.button_through_line_dark_theme {
+    background: center no-repeat url('./icons/through_line_dark_theme.png');
+}
+
+.button_through_line_light_theme:hover, .button_through_line_dark_theme:hover {
+    background: center no-repeat url('./icons/through_line-focused.png');
+}
+
+.button_none_light_theme {
+    background: center no-repeat url('./icons/none_light_theme.png');
+}
+
+.button_none_dark_theme {
+    background: center no-repeat url('./icons/none_dark_theme.png');
+}
+
+.button_none_light_theme:hover, .button_none_dark_theme:hover {
+    background: center no-repeat url('./icons/none-focused.png');
+}
 
 .button_undo_light_theme:hover, .button_undo_dark_theme:hover,
 .button_redo_light_theme:hover, .button_redo_dark_theme:hover,
 .button_delete_light_theme:hover, .button_delete_dark_theme:hover,
 .button_sign:hover,
 .button_arrow_down_light_theme:hover, .button_arrow_down_dark_theme:hover,
-.button_arrow_up_light_theme:hover, .button_arrow_up_dark_theme:hover, 
+.button_arrow_up_light_theme:hover, .button_arrow_up_dark_theme:hover,
 .button_align_left_light_theme:hover, .button_align_left_dark_theme:hover,
 .button_align_right_light_theme:hover, .button_align_right_dark_theme:hover,
 .button_align_center_light_theme:hover, .button_align_center_dark_theme:hover,
-.button_text_color_light_theme:hover, .button_text_color_dark_theme:hover {
+.button_text_color_light_theme:hover, .button_text_color_dark_theme:hover,
+.button_italic_light_theme:hover, .button_italic_dark_theme:hover,
+.button_text_decoration_light_theme:hover, .button_text_decoration_dark_theme:hover,
+.button_underline_light_theme:hover, .button_underline_dark_theme:hover,
+.button_overline_light_theme:hover, .button_overline_dark_theme:hover,
+.button_through_line_light_theme:hover, .button_through_line_dark_theme:hover,
+.button_none_light_theme:hover, .button_none_dark_theme:hover {
     background-color: rgba(0, 0, 0, 0.5);
     cursor: pointer;
     color: #ff9100;
