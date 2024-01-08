@@ -16,7 +16,7 @@ const SlideView = ({
             className = {styles.slide}
             style = {{"background": stringStile}}
         >
-            <ul>{slideElements}</ul>                
+            <ul>{slideElements}</ul>
         </div>
     )
 }

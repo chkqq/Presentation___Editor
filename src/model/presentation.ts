@@ -108,12 +108,12 @@ function switchSlidePositionsReducer(presentation: Presentation, orderShift: num
     return {
         ...newPresentation,
         slides: newSlides
-    }   
+    }
 }
 
 function presentationReducer(state: Presentation, action: ActionType): Presentation {
     switch (action.type) {
-        case 'CHANGE_TITLE': 
+        case 'CHANGE_TITLE':
             return action.newTitle !== undefined? changeTitleReducer(state, action.newTitle): deepClone(state) as Presentation
         case 'ADD_SLIDE':
             return addSlideReducer(state);
@@ -121,9 +121,9 @@ function presentationReducer(state: Presentation, action: ActionType): Presentat
             return deleteSlidesReducer(state);
         case 'SWITCH_SLIDE':
             return action.slideId !== undefined? switchSlideReducer(state, action.slideId): deepClone(state) as Presentation
-        case 'SELECT_ONE_SLIDE': 
+        case 'SELECT_ONE_SLIDE':
             return action.slideId !== undefined? selectOneSlideReducer(state, action.slideId): deepClone(state) as Presentation;
-        case 'SELECT_MANY_SLIDE': 
+        case 'SELECT_MANY_SLIDE':
             return action.slideId !== undefined? selectManySlideReducer(state, action.slideId): deepClone(state) as Presentation
         case 'SWITCH_SLIDE_POSITIONS':
             return action.orderShift !== undefined? switchSlidePositionsReducer(state, action.orderShift): deepClone(state) as Presentation;

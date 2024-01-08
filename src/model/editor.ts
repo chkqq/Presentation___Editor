@@ -81,7 +81,6 @@ function pasteReducer(editor: Editor): Editor {
             }
         })
         for (let i = 0; i < newEditor.buffers.elementBuffer.length; i++) {
-            
         }
     }
     else {
@@ -119,7 +118,6 @@ function switchPreviewReducer(editor: Editor): Editor {
 
 function toggleThemeReducer(editor: Editor): Editor {
     const newEditor = deepClone(editor) as Editor;
-    console.log('1212');
     return {
       ...newEditor,
       isDarkTheme: !editor.isDarkTheme,
@@ -148,7 +146,7 @@ function redoReducer(editor: Editor): Editor {
         const newPresentation: Presentation = newHistory.redoStack.pop()!;
         newHistory.undoStack.push(newEditor.presentation);
         return {
-            ...newEditor, 
+            ...newEditor,
             history: newHistory,
             presentation: newPresentation
         }
@@ -169,11 +167,11 @@ function editorReducer(state: Editor, action: ActionType): Editor {
             return switchPreviewReducer(state)
         case 'TOGGLE_THEME':
             return toggleThemeReducer(state)
-        case 'UNDO': 
+        case 'UNDO':
             return undoReducer(state)
         case 'REDO':
             return redoReducer(state);
-        case 'PASTE': 
+        case 'PASTE':
             return pasteReducer(state)
         case 'COPY':
             return copyReducer(state);

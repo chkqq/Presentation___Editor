@@ -98,9 +98,8 @@ function addFigure(doc: jsPDF, object: SlideElement) {
             addTriangle(doc, object, drawingMode);
         } else if (object.figure.form === 'circle') {
             addEllipse(doc, object, drawingMode);
-        }    
+        }
     }
-    
 }
 
 function addImage(doc: jsPDF, object: SlideElement, base64: string) {
@@ -146,7 +145,7 @@ async function setBackgroundImage(doc: jsPDF, image: SlideElement) {
             818,
             582
         );
-    } 
+    }
 }
 
 function setBackgroundColor(doc: jsPDF, color: string) {
@@ -182,7 +181,7 @@ async function addSlides(doc: jsPDF, slides: Array<Slide>) {
                     height: 582
                 },
                 image: slide.background
-            } 
+            }
             await setBackgroundImage(doc, bgImage);
         }
         await addObjectsOnPage(doc, slide.elements);
