@@ -1,0 +1,41 @@
+{
+    "topToolButtons": {
+        "rename": "重命名",
+        "save": "保存",
+        "download": "下载",
+        "renamePlaceholder": "输入名称...",
+        "ChangeLanguage": "语言",
+        "russianLanguage": "Русский",
+        "englishLanguage": "English",
+        "chinaLanguage":  "中文"
+    },
+    "mainToolButtons": {
+        "insert": "插入",
+        "figure": "图形",
+        "text": "文本",
+        "background": "背景",
+        "chooseBackgroundImage": "选择背景图片",
+        "deleteBackground": "删除背景",
+        "figureSettings": {
+            "pouringFigure": "填充图形",
+            "pouringTitle": "填充",
+            "deletePouring": "删除填充",
+            "figureOutline": "图形轮廓",
+            "outlineTitle": "轮廓",
+            "outlineThickness": "厚度",
+            "deleteOutline": "删除轮廓"
+        },
+        "textSettings": {
+            "font": "字体",
+            "fontSize": "大小",
+            "fontWeight": "字重"
+        },
+        "preview": "预览",
+        "downloadPDF": "下载 PDF"
+    },
+    "general": {
+        "color": "颜色",
+        "image": "图像",
+        "accept": "确认"
+    }
+}

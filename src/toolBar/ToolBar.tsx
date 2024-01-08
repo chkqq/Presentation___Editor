@@ -161,6 +161,15 @@ const ToolBar = ({
                             >
                                 {localeContext.locale.localization.topToolButtons.englishLanguage}
                             </button>
+                            <button
+                                className={[styles.language_buttons,
+                                isDarkTheme
+                                ? styles.language_buttons_light_theme
+                                : styles.language_buttons_dark_theme ].join(' ')}
+                                onClick={() => handleLanguageClick("ch_CH")}
+                            >
+                                {localeContext.locale.localization.topToolButtons.chinaLanguage}
+                            </button>
                         </div>
                         )}
                     </div>

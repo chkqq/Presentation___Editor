@@ -97,9 +97,9 @@ const SlidesElement = ({
     if(slideElement === undefined) {
         return (<div></div>)
     }
-    
+
     switch (slideElement.elementType) {
-        case "text": 
+        case "text":
             if (slideElement.textProps) {
                 return (
                     <div
@@ -192,8 +192,8 @@ const SlidesElement = ({
                 )
             }
             else {
-                return null 
-            }    
+                return null
+            }
         case "image":
             return (
                 <div

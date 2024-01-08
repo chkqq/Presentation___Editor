@@ -5,8 +5,9 @@
         "download": "Download",
         "renamePlaceholder": "Enter the title...",
         "ChangeLanguage": "Language",
-        "russianLanguage": "Russian",
-        "englishLanguage": "English"
+        "russianLanguage": "Русский",
+        "englishLanguage": "English",
+        "chinaLanguage":  "中文"
     },
     "mainToolButtons": {
         "insert": "Insert",

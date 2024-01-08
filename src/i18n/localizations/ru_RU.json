@@ -6,7 +6,8 @@
         "renamePlaceholder": "Введите название...",
         "ChangeLanguage": "Язык",
         "russianLanguage": "Русский",
-        "englishLanguage": "Английский"
+        "englishLanguage": "English",
+        "chinaLanguage":  "中文"
     },
     "mainToolButtons": {
         "insert": "Вставка",
