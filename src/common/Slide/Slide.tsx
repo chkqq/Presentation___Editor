@@ -12,7 +12,7 @@ const SlideView = ({
 }: SlideViewProps) => {
     const stringStile: string = background[0] !== '#' ? '0 0/cover url(' + background + ')' : background;
     return (
-        <div 
+        <div
             className = {styles.slide}
             style = {{"background": stringStile}}
         >

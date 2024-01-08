@@ -171,7 +171,7 @@ function switchLayerReducer(slide: Slide, orderShift: number): Slide {
     }
     return {
         ...newSlide
-    }   
+    }
 }
 
 function changeSizeReducer(slide: Slide, newWidth: number, newHeight: number, xShift: number, yShift: number): Slide {
