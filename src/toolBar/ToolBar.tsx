@@ -12,7 +12,7 @@ import { LocaleContext } from "../App";
 import { Editor, Slide, SlideElement } from "../model/types"
 
 import styles from "./ToolBar.module.css"
-import EditColorWindow from "./editColorWindow/EditColorWindow";
+import EditColorWindow from "../common/editColorWindow/EditColorWindow";
 import { exportDoc, addSlide, changeTextProps, changeTitle, redo, removeSlides, saveDoc, switchPreview, toggleTheme, switchSlidePositions, undo } from "../model/actionCreators";
 import ThemeButton from "../common/ThemeButton/themeButton";
 

@@ -40,17 +40,17 @@ const SlidesElement = ({
     const slideElementRef = useRef<HTMLDivElement>(null);
 
 
-    const clickOutsideFunction = () => { 
+    const clickOutsideFunction = () => {
         if (active && slideElement) {
             removeSelection(slideElement.elementId)
         } else {
             return(null)
         }
     }
-    useClickOutside(slideElementRef, clickOutsideFunction, slideRef);  
-    
+    useClickOutside(slideElementRef, clickOutsideFunction, slideRef);
+
     useDragAndDrop({
-        elementRef: slideElementRef, 
+        elementRef: slideElementRef,
         onMouseUpFunction: (coordinates: Position) => changePosition(coordinates.x, coordinates.y),
         active
     })
@@ -78,7 +78,7 @@ const SlidesElement = ({
         elementRef: slideElementRef,
         corners,
         onMouseUpFunction: (width: number, height: number, x: number, y: number) => changeSize(width, height, x, y)
-    }) 
+    })
 
     const [elementWidth, setElementWidth] = useState(slideElement?.size.width)
     const [elementHeight, setElementHeight] = useState(slideElement?.size.height)
@@ -92,7 +92,7 @@ const SlidesElement = ({
         setElementWidth(Number(slideElementRef.current?.style.width.substring(0, slideElementRef.current?.style.width.length - 2)));
         setElementHeight(Number(slideElementRef.current?.style.height.substring(0, slideElementRef.current?.style.height.length - 2)))
     }, [Number(slideElementRef.current?.style.width.substring(0, slideElementRef.current?.style.width.length - 2))
-    ])    
+    ])
 
     if(slideElement === undefined) {
         return (<div></div>)
@@ -237,7 +237,7 @@ const SlidesElement = ({
                 </div>
             )
     }
-    
+
 }
 
 function mapStateToProps(state: Editor, ownProps: {slideId: string, elementId: string, active: boolean}) {
@@ -261,4 +261,3 @@ const mapDispatchToProps = (dispatch: AppDispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SlidesElement)
-

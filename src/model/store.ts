@@ -138,11 +138,9 @@ function mainReducer(state: Editor = initialState, action: ActionType): Editor {
     if (addInHistory) {newState.history = addActionToHistoryReducer(state)}
     newState.presentation.slides.splice(indexCurrentSlide, 1, slideReducer(newState.presentation.slides[indexCurrentSlide], action))
     newState.presentation = presentationReducer(newState.presentation, action);
-    /* localStorage.setItem("savedEditor", JSON.stringify(newState)) */
     return newState
 }
 
-// localStorage.getItem("savedEditor") !== null ? deepClone(JSON.parse(localStorage.getItem("savedEditor")!)) as Editor:
 
 let store = createStore(mainReducer, initialState)
 

@@ -91,7 +91,7 @@ function addFigure(doc: jsPDF, object: SlideElement) {
             doc.setFillColor(object.figure.fillColor);
         }
         doc.setLineWidth(object.figure.strokeWidth);
-        const drawingMode = 'FD'; //DrawFill
+        const drawingMode = 'FD';
         if (object.figure.form === 'rectangle') {
             addRect(doc, object, drawingMode);
         } else if (object.figure.form === 'triangle') {

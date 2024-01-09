@@ -42,7 +42,7 @@ const SideBar = ({
                         }
                         else if (e.shiftKey) {
                             selectManySlides(slide.slideId)
-                        }   
+                        }
                         else {
                             switchSlide(slide.slideId)
                         }
@@ -52,21 +52,21 @@ const SideBar = ({
                         slideElements = {
                             slide.elements.map((slideElement) =>
                                 <li
-                                    key = {slideElement.elementId} 
+                                    key = {slideElement.elementId}
                                     className = {styles.slide_element}
-                                > 
+                                >
                                     <SlidesElement
                                         slideId = {slide.slideId}
                                         elementId= {slideElement.elementId}
                                         active = {false}
                                         slideRef={slideRef}
                                     />
-                                </li> 
+                                </li>
                             )}
-                        background = {slide.background}   
+                        background = {slide.background}
                     />
                 </div>
-            </li>    
+            </li>
         </div>
     ))
     return (

@@ -1,9 +1,9 @@
 import { useEffect, useCallback } from 'react';
 
     const useClickOutside = (
-        elementRef: React.RefObject<HTMLElement|null>, 
+        elementRef: React.RefObject<HTMLElement|null>,
         onOutsideClick: () => void,
-        activeArea?: React.RefObject<HTMLElement|null> 
+        activeArea?: React.RefObject<HTMLElement|null>
     ) => {
     const onMouseDown = useCallback((e: MouseEvent) => {
         if (!e.shiftKey && !e.ctrlKey) {
@@ -21,7 +21,7 @@ import { useEffect, useCallback } from 'react';
 
     useEffect(() => {
         window.addEventListener('mousedown', onMouseDown)
-    
+
         return () => {
             window.removeEventListener('mousedown', onMouseDown)
         }

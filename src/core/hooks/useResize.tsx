@@ -23,7 +23,7 @@ export const useResize = ({
         height: useRef(0)
     }
     const isStartSizeDeclared = useRef(false)
-    const newWidth = useRef(0); 
+    const newWidth = useRef(0);
     const newHeight = useRef(0);
     const edgeType = useRef('');
 
@@ -53,14 +53,14 @@ export const useResize = ({
             const shiftY = e.clientY - startClientY.current;
             const proportions = startObjectSize.width.current/startObjectSize.height.current;
             switch (edgeType.current) {
-                case 'top-left': 
+                case 'top-left':
                     if (e.shiftKey) {
                         newX = startObjectPositionX.current + shiftX * proportions;
                         newY = startObjectPositionY.current + shiftX;
                         shiftXRef.current = shiftX * proportions;
                         shiftYRef.current = shiftX;
                         newWidth.current = startObjectSize.width.current - shiftX * proportions;
-                        newHeight.current = startObjectSize.height.current - shiftX;    
+                        newHeight.current = startObjectSize.height.current - shiftX;
                     } else {
                         newX = startObjectPositionX.current + shiftX;
                         newY = startObjectPositionY.current + shiftY;
@@ -70,46 +70,46 @@ export const useResize = ({
                         newHeight.current = startObjectSize.height.current - shiftY
                     }
                 break;
-                case 'top-right': 
+                case 'top-right':
                     if (e.shiftKey) {
                         newX = startObjectPositionX.current;
-                        newY = startObjectPositionY.current + shiftY; 
+                        newY = startObjectPositionY.current + shiftY;
                         shiftYRef.current = shiftY;
                         newWidth.current = startObjectSize.width.current - shiftY * proportions;
-                        newHeight.current = startObjectSize.height.current - shiftY   
+                        newHeight.current = startObjectSize.height.current - shiftY
                     } else {
                         newX = startObjectPositionX.current;
-                        newY = startObjectPositionY.current + shiftY; 
+                        newY = startObjectPositionY.current + shiftY;
                         shiftYRef.current = shiftY;
                         newWidth.current = startObjectSize.width.current + shiftX;
-                        newHeight.current = startObjectSize.height.current - shiftY    
+                        newHeight.current = startObjectSize.height.current - shiftY
                     }
                 break;
-                case 'bottom-right': 
+                case 'bottom-right':
                     if (e.shiftKey) {
                         newWidth.current = startObjectSize.width.current + shiftX * proportions;
-                        newHeight.current = startObjectSize.height.current + shiftX;    
+                        newHeight.current = startObjectSize.height.current + shiftX;
                     } else {
                         newWidth.current = startObjectSize.width.current + shiftX;
-                        newHeight.current = startObjectSize.height.current + shiftY    
-                    } 
+                        newHeight.current = startObjectSize.height.current + shiftY
+                    }
                 break;
-                case 'bottom-left': 
+                case 'bottom-left':
                     if (e.shiftKey) {
                         newX = startObjectPositionX.current - shiftY * proportions;
                         newY = startObjectPositionY.current;
-                        shiftXRef.current = -shiftY * proportions; 
+                        shiftXRef.current = -shiftY * proportions;
                         newWidth.current = startObjectSize.width.current + shiftY * proportions;
-                        newHeight.current = startObjectSize.height.current + shiftY    
+                        newHeight.current = startObjectSize.height.current + shiftY
                     } else {
                         newX = startObjectPositionX.current + shiftX;
                         newY = startObjectPositionY.current;
-                        shiftXRef.current = shiftX; 
+                        shiftXRef.current = shiftX;
                         newWidth.current = startObjectSize.width.current - shiftX;
-                        newHeight.current = startObjectSize.height.current + shiftY;    
+                        newHeight.current = startObjectSize.height.current + shiftY;
                     }
                 break;
-            } 
+            }
             const strokeWidth = Number(elementRef.current?.style.strokeWidth)
             if (newWidth.current < strokeWidth) {
                 newWidth.current = strokeWidth
@@ -139,7 +139,7 @@ export const useResize = ({
                 height: newHeight.current
             });
             onMouseUpFunction(
-                newWidth.current, 
+                newWidth.current,
                 newHeight.current,
                 shiftX,
                 shiftY
@@ -152,8 +152,8 @@ export const useResize = ({
             e.preventDefault();
             const target = e.target as HTMLDivElement;
             edgeType.current = target.id;
-            window.addEventListener('mousemove', onMouseMove); 
-            window.addEventListener('mouseup', onMouseUp); 
+            window.addEventListener('mousemove', onMouseMove);
+            window.addEventListener('mouseup', onMouseUp);
             const width = elementRef.current?.style.width;
             const height = elementRef.current?.style.height
             startObjectSize.width.current = Number(width.substring(0, width.length - 2));
@@ -184,7 +184,7 @@ export const useResize = ({
             corners.topRight.current?.addEventListener('mousedown', onMouseDown);
             corners.bottomLeft.current?.addEventListener('mousedown', onMouseDown);
             corners.bottomRight.current?.addEventListener('mousedown', onMouseDown);
-           
+
         return () => {
             if (elementRef.current) {
                 corners.topLeft.current?.removeEventListener('mousedown', onMouseDown);
@@ -193,5 +193,5 @@ export const useResize = ({
                 corners.bottomRight.current?.removeEventListener('mousedown', onMouseDown);
             }
         }
-    }, [onMouseDown, corners.topLeft.current, corners.topRight.current, corners.bottomLeft.current, corners.bottomRight.current]) 
+    }, [onMouseDown, corners.topLeft.current, corners.topRight.current, corners.bottomLeft.current, corners.bottomRight.current])
 }

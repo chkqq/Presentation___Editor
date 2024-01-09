@@ -1,9 +1,9 @@
 import { useState, useRef, useContext } from "react";
 import { Editor } from "../../model/types";
 import { SlideElement } from "../../model/types"
-import Button from "../../common/Button/Button";
-import Knob from "../../common/Knob/Knob";
-import Palette from "../../common/Palette/Palette";
+import Button from "../Button/Button";
+import Knob from "../Knob/Knob";
+import Palette from "./Palette/Palette";
 import styles from "./EditColorWindow.module.css";
 import { connect } from "react-redux";
 import { AppDispatch } from "../../model/store";
@@ -24,7 +24,7 @@ interface EditColorWindowProps {
     setTextColor: (newColor: string) => void
 }
 
-function EditColorWindow({ 
+function EditColorWindow({
     isDarkTheme,
     drawMode,
     firstSelectedElement,
@@ -89,7 +89,7 @@ function EditColorWindow({
                     </div>
                     <div>
                         <Palette
-                            sendValue = {(colorValue) => setSelectedColor(colorValue)}
+                            sendValue = {(colorValue: string) => setSelectedColor(colorValue)}
                         />
                     </div>
                 </div>

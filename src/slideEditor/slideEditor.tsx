@@ -13,11 +13,11 @@ type SlideBarProps = {
 function SlideEditor({
         slide,
         isDarkTheme
-    }: SlideBarProps) {  
-    const slideRef = useRef(null);     
-    
+    }: SlideBarProps) {
+    const slideRef = useRef(null);
+
     const slideElements = slide.elements.map((slideElement) =>
-        <li             
+        <li
             key = {slideElement.elementId}
             className = {styles.slide_element}
         >
@@ -27,17 +27,17 @@ function SlideEditor({
                 active={slide.selectedElementsIds.includes(slideElement.elementId)}
                 slideRef={slideRef}
             />
-            
+
         </li>
     )
     return (
-        <div 
+        <div
             className={[styles.slide_container, isDarkTheme ? styles.slide_container_light_theme : styles.slide_container_dark_theme].join(' ')}
             ref = {slideRef}
         >
             <SlideView
                 slideElements = {slideElements}
-                background = {slide.background} 
+                background = {slide.background}
             />
         </div>
     )

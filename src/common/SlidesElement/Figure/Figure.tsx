@@ -43,7 +43,7 @@ const Rectangle = ({
             width = {size.width + figure.strokeWidth}
             height = {size.height + figure.strokeWidth}
         >
-            <rect   
+            <rect
                 x = {figure.strokeWidth/2}
                 y = {figure.strokeWidth/2}
                 width = {width}
@@ -86,7 +86,7 @@ const Figure = ({
 }: FigureProps) => {
     switch (figure.form) {
         case "rectangle":
-            return ( 
+            return (
                 <Rectangle
                     figure = {figure}
                     size = {size}
@@ -98,16 +98,15 @@ const Figure = ({
                 <Circle
                     figure = {figure}
                     size = {size}
-                />     
+                />
             )
-            
         case "triangle":
             return (
                 <Triangle
                     figure = {figure}
                     size = {size}
-                />            
-            )    
+                />
+            )
     }
 }
 

@@ -21,7 +21,7 @@ export function useDragAndDrop({
     })
 
     const startClientX = useRef(0);
-    const startClientY = useRef(0); 
+    const startClientY = useRef(0);
 
     const onMouseMove = useCallback((e: MouseEvent) => {
         if (isStartPosDeclared.current) {
@@ -33,18 +33,18 @@ export function useDragAndDrop({
             })
         }
     }, [setElementPosition])
-    
+
     const onMouseUp = useCallback((e: MouseEvent) => {
         if (isStartPosDeclared.current) {
             const xShift = e.clientX - startClientX.current;
             const yShift = e.clientY - startClientY.current
             let newX = startObjectPositionX.current + e.clientX - startClientX.current;
-            let newY = startObjectPositionY.current + e.clientY - startClientY.current; 
+            let newY = startObjectPositionY.current + e.clientY - startClientY.current;
             setElementPosition({
                 x: newX,
                 y: newY
             })
-           onMouseUpFunction({x: xShift, y: yShift})   
+           onMouseUpFunction({x: xShift, y: yShift})
         }
         window.removeEventListener('mousemove', onMouseMove)
         window.removeEventListener('mouseup', onMouseUp)
@@ -61,14 +61,14 @@ export function useDragAndDrop({
             isStartPosDeclared.current = true
             startClientX.current = e.clientX;
             startClientY.current = e.clientY;
-        }    
+        }
     }, [elementRef, onMouseMove, onMouseUp])
-    
+
     useEffect(() => {
         if (elementRef.current && isStartPosDeclared.current) {
             elementRef.current.style.left = `${elementPosition.x}px`;
             elementRef.current.style.top = `${elementPosition.y}px`
-        } 
+        }
     }, [elementPosition, setElementPosition, elementRef])
 
     useEffect(() => {
@@ -76,7 +76,7 @@ export function useDragAndDrop({
         if (elementRef.current) {
             elementRef.current.addEventListener('mousedown', onMouseDown)
             elementRefValue = elementRef.current;
-        } 
+        }
         return () => {
             if (elementRefValue) {
                 elementRefValue.removeEventListener('mousedown', onMouseDown)

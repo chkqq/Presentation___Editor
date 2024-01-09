@@ -111,7 +111,7 @@ function selectManyElementsReducer(slide: Slide, elementId: string): Slide {
     const newSlide = deepClone(slide) as Slide;
     newSlide.selectedElementsIds.push(elementId);
     return newSlide
-} 
+}
 
 function changePositionReducer(slide: Slide, xShift: number, yShift: number): Slide {
     const newSlide = deepClone(slide) as Slide;
