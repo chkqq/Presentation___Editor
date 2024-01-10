@@ -130,20 +130,6 @@ function changePositionReducer(slide: Slide, xShift: number, yShift: number): Sl
     return newSlide
 }
 
-function changeAngleReducer(slide: Slide, angleShift: number): Slide {
-    const newSlide = deepClone(slide) as Slide;
-    for(let i = 0; i < newSlide.elements.length; i++) {
-        if(newSlide.selectedElementsIds.includes(newSlide.elements[i].elementId)) {
-            const newElement: SlideElement = {
-                ...newSlide.elements[i],
-                angle: newSlide.elements[i].angle + angleShift
-            };
-            newSlide.elements.splice(i, 1, newElement)
-        }
-    }
-    return newSlide
-}
-
 function switchLayerReducer(slide: Slide, orderShift: number): Slide {
     const newSlide = deepClone(slide) as Slide;
     if (orderShift > 0) {
@@ -321,8 +307,6 @@ function slideReducer(state: Slide, action: ActionType): Slide {
             return action.elementId !== undefined? selectManyElementsReducer(state, action.elementId): deepClone(state) as Slide;
         case 'CHANGE_POSITION':
             return action.changePositionCoordinates !== undefined? changePositionReducer(state, action.changePositionCoordinates.xShift, action.changePositionCoordinates.yShift): deepClone(state) as Slide;
-        case 'CHANGE_ANGLE':
-            return action.changeAngleArgs !== undefined? changeAngleReducer(state, action.changeAngleArgs.angleShift): deepClone(state) as Slide;
         case 'SWITCH_LAYER':
             return action.orderShift !== undefined? switchLayerReducer(state, action.orderShift): deepClone(state) as Slide;
         case 'CHANGE_SIZE':

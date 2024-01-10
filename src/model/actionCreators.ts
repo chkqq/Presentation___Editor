@@ -153,14 +153,6 @@ function changePosition(xShift: number, yShift: number) {
     }
 }
 
-function changeAngle(angleShift: number) {
-    return {
-        type: 'CHANGE_ANGLE',
-        changeAngleArgs: {
-            angleShift
-        }
-    }
-}
 
 function changeSize(newWidth: number, newHeight: number, xShift: number, yShift: number) {
     return {
@@ -242,7 +234,7 @@ function removeSelection(elementId: string) {
 
 export { uploadDoc, redo, undo, switchPreview, toggleTheme, exportDoc, saveDoc, changeTitle, addSlide, removeSlides,
          switchSlide, selectOneSlide, selectManySlides, switchSlidePositions, setBackground,
-         addObject, addImage, selectElement, selectManyElements, changePosition, changeAngle, changeSize, switchLayer,
+         addObject, addImage, selectElement, selectManyElements, changePosition, changeSize, switchLayer,
          changeTextProps, changeStrokeWidth, changeStrokeColor, changeFillColor, deleteSelected, removeSelection,
          copy, paste
 }

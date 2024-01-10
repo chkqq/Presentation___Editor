@@ -6,7 +6,7 @@ import type { Editor, SlideElement } from "../../model/types"
 import { useDragAndDrop } from '../../core/hooks/useDragAndDrop';
 import type { Position } from '../../core/types/types'
 import type { AppDispatch } from '../../model/store';
-import { changePosition, changeSize, changeTextProps, selectElement, selectManyElements, removeSelection, changeAngle } from '../../model/actionCreators';
+import { changePosition, changeSize, changeTextProps, selectElement, selectManyElements, removeSelection } from '../../model/actionCreators';
 import { connect } from 'react-redux';
 import { useResize } from '../../core/hooks/useResize';
 import { useClickOutside } from '../../core/hooks/useClickOutside';
@@ -17,7 +17,6 @@ type SlidesElementProps = {
     active: boolean,
     slideRef: React.RefObject<HTMLElement|null>,
     changePosition: (newX: number, newY: number) => void,
-    changeAngle: (angleShift: number) => void,
     selectElement: (elementId: string) => void,
     selectManyElements: (elementId: string) => void,
     changeTextValue: (value: string) => void,
@@ -30,7 +29,6 @@ const SlidesElement = ({
     active,
     slideRef,
     changePosition,
-    changeAngle,
     selectElement,
     selectManyElements,
     changeTextValue,
@@ -251,7 +249,6 @@ function mapStateToProps(state: Editor, ownProps: {slideId: string, elementId: s
 const mapDispatchToProps = (dispatch: AppDispatch) => {
     return {
         changePosition: (newX: number, newY: number) => dispatch(changePosition(newX, newY)),
-        changeAngle: (angleShift: number) => dispatch(changeAngle(angleShift)),
         selectElement: (elementId: string) => dispatch(selectElement(elementId)),
         selectManyElements: (elementId: string) => dispatch(selectManyElements(elementId)),
         changeTextValue: (value: string) => dispatch(changeTextProps(undefined, undefined, value)),

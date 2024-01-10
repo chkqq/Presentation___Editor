@@ -43,9 +43,6 @@ export type ActionType = {
         element: string,
         textValue?: string
     }
-    changeAngleArgs?: {
-        angleShift: number
-    },
     changePositionCoordinates?: {
         xShift: number,
         yShift: number
